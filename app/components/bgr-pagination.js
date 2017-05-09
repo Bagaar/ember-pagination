@@ -1,0 +1,1 @@
+export { default } from 'bgr-ember-pagination/components/bgr-pagination';

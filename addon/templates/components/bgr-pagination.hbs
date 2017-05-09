@@ -1,0 +1,37 @@
+<li class="pagination__item">
+  {{#if isFirstPage}}
+    <span class="pagination__disabled">&lt;&lt;</span>
+  {{else}}
+    {{{link-to "&lt;&lt;" (query-params page=firstPage) class="pagination__link"}}}
+  {{/if}}
+</li>
+
+<li class="pagination__item">
+  {{#if previousPage}}
+    {{{link-to "&lt;" (query-params page=previousPage) class="pagination__link"}}}
+  {{else}}
+    <span class="pagination__disabled">&lt;</span>
+  {{/if}}
+</li>
+
+{{#each pages as |page|}}
+  <li class="pagination__item">
+    {{link-to page (query-params page=page) class="pagination__link"}}
+  </li>
+{{/each}}
+
+<li class="pagination__item">
+  {{#if nextPage}}
+    {{{link-to "&gt;" (query-params page=nextPage) class="pagination__link"}}}
+  {{else}}
+    <span class="pagination__disabled">&gt;</span>
+  {{/if}}
+</li>
+
+<li class="pagination__item">
+  {{#if isLastPage}}
+    <span class="pagination__disabled">&gt;&gt;</span>
+  {{else}}
+    {{{link-to "&gt;&gt;" (query-params page=lastPage) class="pagination__link"}}}
+  {{/if}}
+</li>
