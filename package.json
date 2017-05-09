@@ -1,17 +1,19 @@
 {
   "name": "bgr-ember-pagination",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Bagaar Ember Pagination.",
   "keywords": [
-    "ember-addon"
+    "bagaar",
+    "ember-addon",
+    "pagination"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "Bagaar",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": "https://git.bagaar.be/shelf/bgr-ember-pagination",
   "scripts": {
     "build": "ember build",
     "start": "ember server",
