@@ -43,12 +43,12 @@ export default Component.extend({
   }),
 
   pages: computed('activePage', 'perPage', 'totalRecords', function () {
-    const pages = [];
     const activePage = this.get('activePage');
     const perPage = this.get('perPage');
     const totalRecords = this.get('totalRecords');
     const visiblePages = this.get('visiblePages');
 
+    const pages = [];
     const total = Math.ceil(totalRecords / perPage);
     const visible = Math.min(total, visiblePages);
     const half = Math.floor(visible / 2);
