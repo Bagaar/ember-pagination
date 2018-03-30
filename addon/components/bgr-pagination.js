@@ -1,17 +1,14 @@
 import Ember from 'ember';
-import layout from '../templates/components/bgr-pagination';
+import layout from 'bgr-ember-pagination/templates/components/bgr-pagination';
 
-const {
-  Component,
-  computed,
-} = Ember;
+const { Component, computed } = Ember;
 
 export default Component.extend({
   /**
    * Props
    */
 
-  config: {},
+  config: null,
   visiblePages: 7,
 
   /**
@@ -34,15 +31,15 @@ export default Component.extend({
   previousPage: computed.readOnly('config.previousPage'),
   totalRecords: computed.readOnly('config.totalRecords'),
 
-  isFirstPage: computed('activePage', 'firstPage', function () {
+  isFirstPage: computed('activePage', 'firstPage', function() {
     return this.get('activePage') === this.get('firstPage');
   }),
 
-  isLastPage: computed('activePage', 'lastPage', function () {
+  isLastPage: computed('activePage', 'lastPage', function() {
     return this.get('activePage') === this.get('lastPage');
   }),
 
-  pages: computed('activePage', 'perPage', 'totalRecords', function () {
+  pages: computed('activePage', 'perPage', 'totalRecords', 'visiblePages', function() {
     const activePage = this.get('activePage');
     const perPage = this.get('perPage');
     const totalRecords = this.get('totalRecords');

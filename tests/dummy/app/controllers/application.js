@@ -1,9 +1,6 @@
 import Ember from 'ember';
 
-const {
-  computed,
-  Controller,
-} = Ember;
+const { computed, Controller } = Ember;
 
 export default Controller.extend({
   /**
@@ -16,7 +13,7 @@ export default Controller.extend({
    * Computed
    */
 
-  paginationConfig: computed('page', function () {
+  paginationConfig: computed('page', function() {
     const lastPage = 7;
     const firstPage = 1;
     const activePage = parseInt(this.get('page'), 10);
