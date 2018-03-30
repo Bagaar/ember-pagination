@@ -22,9 +22,9 @@ export default Controller.extend({
       activePage,
       firstPage,
       lastPage,
-      nextPage: activePage < lastPage ? activePage + 1 : null,
+      nextPage: activePage < lastPage ? Math.max(activePage + 1, firstPage) : null,
       perPage: 10,
-      previousPage: activePage > firstPage ? activePage - 1 : null,
+      previousPage: activePage > firstPage ? Math.min(activePage - 1, lastPage) : null,
       totalRecords: 70,
     };
   }),
