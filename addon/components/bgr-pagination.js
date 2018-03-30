@@ -9,6 +9,10 @@ export default Component.extend({
    */
 
   config: null,
+  firstPageContent: '&lt;&lt;',
+  lastPageContent: '&gt;&gt;',
+  nextPageContent: '&gt;',
+  previousPageContent: '&lt;',
   visiblePages: 7,
 
   /**
