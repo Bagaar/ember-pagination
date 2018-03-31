@@ -1,0 +1,35 @@
+.pagination {
+  list-style: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+.pagination__item {
+  float: left;
+}
+
+.pagination__item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.pagination__disabled, .pagination__link {
+  color: black;
+  font-family: sans-serif;
+  font-size: 24px;
+  user-select: none;
+}
+
+.pagination__link {
+  text-decoration: none;
+}
+
+.pagination__link.active {
+  color: blue;
+  font-weight: bold;
+}
+
+.pagination__disabled {
+  cursor: default;
+  opacity: .4;
+}
