@@ -1,16 +1,16 @@
 <li class="pagination__item">
   {{#if isFirstPage}}
-    <span class="pagination__disabled">&lt;&lt;</span>
+    <span class="pagination__disabled">{{{firstPageContent}}}</span>
   {{else}}
-    {{{link-to "&lt;&lt;" (query-params page=firstPage) class="pagination__link"}}}
+    {{{link-to firstPageContent (query-params page=firstPage) class="pagination__link"}}}
   {{/if}}
 </li>
 
 <li class="pagination__item">
   {{#if previousPage}}
-    {{{link-to "&lt;" (query-params page=previousPage) class="pagination__link"}}}
+    {{{link-to previousPageContent (query-params page=previousPage) class="pagination__link"}}}
   {{else}}
-    <span class="pagination__disabled">&lt;</span>
+    <span class="pagination__disabled">{{{previousPageContent}}}</span>
   {{/if}}
 </li>
 
@@ -22,16 +22,16 @@
 
 <li class="pagination__item">
   {{#if nextPage}}
-    {{{link-to "&gt;" (query-params page=nextPage) class="pagination__link"}}}
+    {{{link-to nextPageContent (query-params page=nextPage) class="pagination__link"}}}
   {{else}}
-    <span class="pagination__disabled">&gt;</span>
+    <span class="pagination__disabled">{{{nextPageContent}}}</span>
   {{/if}}
 </li>
 
 <li class="pagination__item">
   {{#if isLastPage}}
-    <span class="pagination__disabled">&gt;&gt;</span>
+    <span class="pagination__disabled">{{{lastPageContent}}}</span>
   {{else}}
-    {{{link-to "&gt;&gt;" (query-params page=lastPage) class="pagination__link"}}}
+    {{{link-to lastPageContent (query-params page=lastPage) class="pagination__link"}}}
   {{/if}}
 </li>

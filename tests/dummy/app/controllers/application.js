@@ -1,9 +1,6 @@
 import Ember from 'ember';
 
-const {
-  computed,
-  Controller,
-} = Ember;
+const { computed, Controller } = Ember;
 
 export default Controller.extend({
   /**
@@ -16,19 +13,21 @@ export default Controller.extend({
    * Computed
    */
 
-  paginationConfig: computed('page', function () {
-    const lastPage = 7;
-    const firstPage = 1;
+  config: computed('page', function() {
     const activePage = parseInt(this.get('page'), 10);
+    const firstPage = 1;
+    const perPage = 10;
+    const totalRecords = 70;
+    const lastPage = Math.ceil(totalRecords / perPage);
 
     return {
       activePage,
       firstPage,
       lastPage,
-      nextPage: activePage < lastPage ? activePage + 1 : null,
-      perPage: 10,
-      previousPage: activePage > firstPage ? activePage - 1 : null,
-      totalRecords: 70,
+      nextPage: activePage < lastPage ? Math.max(activePage + 1, firstPage) : null,
+      perPage,
+      previousPage: activePage > firstPage ? Math.min(activePage - 1, lastPage) : null,
+      totalRecords,
     };
   }),
 });
