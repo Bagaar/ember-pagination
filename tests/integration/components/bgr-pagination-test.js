@@ -1,9 +1,7 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
-
-moduleForComponent('bgr-pagination', 'Integration | Component | bgr pagination', {
-  integration: true
-});
 
 function generateConfig({
   activePage = 1,
@@ -28,61 +26,65 @@ const DISABLED_CLASS = '.pagination__disabled';
 const ITEM_CLASS = '.pagination__item';
 const LINK_CLASS = '.pagination__link';
 
-test('it renders a basic pagination config', function(assert) {
-  this.set('config', generateConfig());
+module('Integration | Component | bgr-pagination', function (hooks) {
+  setupRenderingTest(hooks);
 
-  this.render(hbs `{{bgr-pagination config=config}}`);
+  test('it renders a basic pagination config', async function (assert) {
+    this.set('config', generateConfig());
 
-  const $item = this.$(ITEM_CLASS);
+    await render(hbs `{{bgr-pagination config=config}}`);
 
-  assert.equal($item.eq(0).find(DISABLED_CLASS).text(), '<<');
-  assert.equal($item.eq(1).find(DISABLED_CLASS).text(), '<');
-  assert.equal($item.eq(2).find(LINK_CLASS).text(), 1);
-  assert.equal($item.eq(3).find(LINK_CLASS).text(), 2);
-  assert.equal($item.eq(4).find(LINK_CLASS).text(), 3);
-  assert.equal($item.eq(5).find(LINK_CLASS).text(), 4);
-  assert.equal($item.eq(6).find(LINK_CLASS).text(), 5);
-  assert.equal($item.eq(7).find(LINK_CLASS).text(), 6);
-  assert.equal($item.eq(8).find(LINK_CLASS).text(), 7);
-  assert.equal($item.eq(9).find(LINK_CLASS).text(), '>');
-  assert.equal($item.eq(10).find(LINK_CLASS).text(), '>>');
-});
+    const items = this.element.querySelectorAll(ITEM_CLASS);
 
-test('it renders the correct content for each link', function(assert) {
-  this.set('config', generateConfig({ activePage: 4 }));
+    assert.equal(items[0].querySelector(DISABLED_CLASS).textContent.trim(), '<<');
+    assert.equal(items[1].querySelector(DISABLED_CLASS).textContent.trim(), '<');
+    assert.equal(items[2].querySelector(LINK_CLASS).textContent.trim(), 1);
+    assert.equal(items[3].querySelector(LINK_CLASS).textContent.trim(), 2);
+    assert.equal(items[4].querySelector(LINK_CLASS).textContent.trim(), 3);
+    assert.equal(items[5].querySelector(LINK_CLASS).textContent.trim(), 4);
+    assert.equal(items[6].querySelector(LINK_CLASS).textContent.trim(), 5);
+    assert.equal(items[7].querySelector(LINK_CLASS).textContent.trim(), 6);
+    assert.equal(items[8].querySelector(LINK_CLASS).textContent.trim(), 7);
+    assert.equal(items[9].querySelector(LINK_CLASS).textContent.trim(), '>');
+    assert.equal(items[10].querySelector(LINK_CLASS).textContent.trim(), '>>');
+  });
 
-  this.render(hbs `{{bgr-pagination
-    config=config
-    firstPageContent="first"
-    lastPageContent="last"
-    nextPageContent="next"
-    previousPageContent="previous"
-    visiblePages=3
-  }}`);
+  test('it renders the correct content for each link', async function (assert) {
+    this.set('config', generateConfig({ activePage: 4 }));
 
-  const $item = this.$(ITEM_CLASS);
+    await render(hbs `{{bgr-pagination
+      config=config
+      firstPageContent="first"
+      lastPageContent="last"
+      nextPageContent="next"
+      previousPageContent="previous"
+      visiblePages=3
+    }}`);
 
-  assert.equal($item.eq(0).find(LINK_CLASS).text(), 'first');
-  assert.equal($item.eq(1).find(LINK_CLASS).text(), 'previous');
-  assert.equal($item.eq(2).find(LINK_CLASS).text(), 3);
-  assert.equal($item.eq(3).find(LINK_CLASS).text(), 4);
-  assert.equal($item.eq(4).find(LINK_CLASS).text(), 5);
-  assert.equal($item.eq(5).find(LINK_CLASS).text(), 'next');
-  assert.equal($item.eq(6).find(LINK_CLASS).text(), 'last');
-});
+    const items = this.element.querySelectorAll(ITEM_CLASS);
 
-test('it renders the correct disabled links', function(assert) {
-  this.set('config', generateConfig({ activePage: 7 }));
+    assert.equal(items[0].querySelector(LINK_CLASS).textContent.trim(), 'first');
+    assert.equal(items[1].querySelector(LINK_CLASS).textContent.trim(), 'previous');
+    assert.equal(items[2].querySelector(LINK_CLASS).textContent.trim(), 3);
+    assert.equal(items[3].querySelector(LINK_CLASS).textContent.trim(), 4);
+    assert.equal(items[4].querySelector(LINK_CLASS).textContent.trim(), 5);
+    assert.equal(items[5].querySelector(LINK_CLASS).textContent.trim(), 'next');
+    assert.equal(items[6].querySelector(LINK_CLASS).textContent.trim(), 'last');
+  });
 
-  this.render(hbs `{{bgr-pagination config=config visiblePages=3}}`);
+  test('it renders the correct disabled links', async function (assert) {
+    this.set('config', generateConfig({ activePage: 7 }));
 
-  const $item = this.$(ITEM_CLASS);
+    await render(hbs `{{bgr-pagination config=config visiblePages=3}}`);
 
-  assert.equal($item.eq(0).find(LINK_CLASS).text(), '<<');
-  assert.equal($item.eq(1).find(LINK_CLASS).text(), '<');
-  assert.equal($item.eq(2).find(LINK_CLASS).text(), 5);
-  assert.equal($item.eq(3).find(LINK_CLASS).text(), 6);
-  assert.equal($item.eq(4).find(LINK_CLASS).text(), 7);
-  assert.equal($item.eq(5).find(DISABLED_CLASS).text(), '>');
-  assert.equal($item.eq(6).find(DISABLED_CLASS).text(), '>>');
+    const items = this.element.querySelectorAll(ITEM_CLASS);
+
+    assert.equal(items[0].querySelector(LINK_CLASS).textContent.trim(), '<<');
+    assert.equal(items[1].querySelector(LINK_CLASS).textContent.trim(), '<');
+    assert.equal(items[2].querySelector(LINK_CLASS).textContent.trim(), 5);
+    assert.equal(items[3].querySelector(LINK_CLASS).textContent.trim(), 6);
+    assert.equal(items[4].querySelector(LINK_CLASS).textContent.trim(), 7);
+    assert.equal(items[5].querySelector(DISABLED_CLASS).textContent.trim(), '>');
+    assert.equal(items[6].querySelector(DISABLED_CLASS).textContent.trim(), '>>');
+  });
 });

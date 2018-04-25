@@ -1,23 +1,23 @@
-import Ember from 'ember';
-
-const { computed, Controller } = Ember;
+import Controller from '@ember/controller';
+import { computed } from '@ember/object';
 
 export default Controller.extend({
   /**
    * State
    */
 
+  page: 1,
   queryParams: ['page'],
 
   /**
    * Computed
    */
 
-  config: computed('page', function() {
+  config: computed('page', function () {
     const activePage = parseInt(this.get('page'), 10);
     const firstPage = 1;
     const perPage = 10;
-    const totalRecords = 70;
+    const totalRecords = 80;
     const lastPage = Math.ceil(totalRecords / perPage);
 
     return {
