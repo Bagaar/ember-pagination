@@ -1,15 +1,15 @@
-# Bagaar Ember ...
+# Bagaar Ember Pagination
 
 Bagaar logo goes here.
 
-**bgr-ember-... is built and maintained by [Bagaar](http://bagaar.be).**
+**bgr-ember-pagination is built and maintained by [Bagaar](http://bagaar.be).**
 
 Addon description.
 
 ## Installation
 
 ```shell
-ember install bgr-ember-...
+ember install bgr-ember-pagination
 ```
 
 ## Configuration
