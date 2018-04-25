@@ -1,27 +1,33 @@
-# bgr-ember-pagination
+# Bagaar Ember ...
 
-This README outlines the details of collaborating on this Ember addon.
+Bagaar logo goes here.
+
+**bgr-ember-... is built and maintained by [Bagaar](http://bagaar.be).**
+
+Addon description.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd bgr-ember-pagination`
-* `npm install`
-* `bower install`
+```shell
+ember install bgr-ember-...
+```
 
-## Running
+## Configuration
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+Describe how the addon can be configured (e.g. via `config/environment.js`).
 
-## Running Tests
+## Usage
 
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+Describe, step by step, how the addon should be used.
 
-## Building
+## Examples
 
-* `ember build`
+Provide clear additional code examples.
 
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+## Contribution Guidelines
+
+Describe the contribution guidelines.
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE.md).
