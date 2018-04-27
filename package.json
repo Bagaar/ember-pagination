@@ -21,7 +21,7 @@
     "start": "ember serve",
     "test": "ember test",
     "test:all": "ember try:each",
-    "precommit": "npm run test && npm run lint:js"
+    "precommit": "npm run lint:js"
   },
   "dependencies": {
     "ember-cli-babel": "^6.6.0",

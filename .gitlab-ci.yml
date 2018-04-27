@@ -1,0 +1,14 @@
+stages:
+  - test
+
+test-addon:
+  image: git.bagaar.be:4567/docker/nodejs:8.9.1
+  only:
+    - develop
+  script:
+    - npm install -g ember-cli
+    - npm install
+    - npm run test
+  stage: test
+  tags:
+    - docker-ci
