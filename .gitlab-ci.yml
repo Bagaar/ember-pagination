@@ -6,9 +6,17 @@ test-addon:
   only:
     - develop
   script:
-    - npm install -g ember-cli
-    - npm install
-    - npm run test
+    # install chrome
+    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+    - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
+    - apt-get update -yqqq
+    - apt-get install -y google-chrome-stable > /dev/null 2>&1
+
+    # install dependencies
+    - npm install --silent
+
+    # run tests
+    - ./node_modules/.bin/ember test
   stage: test
   tags:
     - docker-ci
