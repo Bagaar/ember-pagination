@@ -1,5 +1,7 @@
 # Bagaar Ember Pagination
 
+[![pipeline status](https://git.bagaar.be/shelf/bgr-ember-pagination/badges/develop/pipeline.svg)](https://git.bagaar.be/shelf/bgr-ember-pagination/commits/develop)
+
 Bagaar logo goes here.
 
 **bgr-ember-pagination is built and maintained by [Bagaar](http://bagaar.be).**
