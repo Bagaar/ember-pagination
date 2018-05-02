@@ -1,6 +1,12 @@
 import Component from '@ember/component';
-import { computed } from '@ember/object';
+import EmberObject, { computed } from '@ember/object';
 import layout from 'bgr-ember-pagination/templates/components/bgr-pagination';
+
+function computedQueryParams(key) {
+  return computed(key, function () {
+    return this.createQueryParams(this.get(key));
+  });
+}
 
 export default Component.extend({
   /**
@@ -9,6 +15,7 @@ export default Component.extend({
 
   config: null,
   pageRangeDisplayed: 5,
+  queryParam: 'page',
 
   breakLabel: '...',
   nextPageLabel: '>',
@@ -39,6 +46,11 @@ export default Component.extend({
   perPage: computed.readOnly('config.perPage'),
   previousPage: computed.readOnly('config.previousPage'),
   totalRecords: computed.readOnly('config.totalRecords'),
+
+  firstPageQueryParams: computedQueryParams('firstPage'),
+  lastPageQueryParams: computedQueryParams('lastPage'),
+  nextPageQueryParams: computedQueryParams('nextPage'),
+  previousPageQueryParams: computedQueryParams('previousPage'),
 
   isFirstPage: computed('activePage', 'firstPage', function () {
     return this.get('activePage') === this.get('firstPage');
@@ -77,8 +89,11 @@ export default Component.extend({
       }
     }
 
-    for (let page = pageRangeStart; page <= pageRangeEnd; page++) {
-      pageRange.push(page);
+    for (let number = pageRangeStart; number <= pageRangeEnd; number++) {
+      pageRange.push({
+        number,
+        queryParams: this.createQueryParams(number),
+      });
     }
 
     return pageRange;
@@ -102,13 +117,13 @@ export default Component.extend({
   showLowerBreak: computed('pageRange', 'pageRangeLowerLimit', function () {
     const pageRange = this.get('pageRange');
 
-    return pageRange.length && pageRange[0] !== this.get('pageRangeLowerLimit');
+    return pageRange.length && pageRange[0].number !== this.get('pageRangeLowerLimit');
   }),
 
   showUpperBreak: computed('pageRange', 'pageRangeUpperLimit', function () {
     const pageRange = this.get('pageRange');
 
-    return pageRange.length && pageRange[pageRange.length - 1] !== this.get('pageRangeUpperLimit');
+    return pageRange.length && pageRange[pageRange.length - 1].number !== this.get('pageRangeUpperLimit');
   }),
 
   showPagination: computed('totalPages', function () {
@@ -123,4 +138,20 @@ export default Component.extend({
 
     return isNaN(totalPages) ? 0 : totalPages;
   }),
+
+  /**
+   * methods
+   */
+
+  createQueryParams(value) {
+    const key = this.get('queryParam');
+    const values = {
+      [key]: value,
+    };
+
+    return EmberObject.create({
+      isQueryParams: true,
+      values,
+    });
+  },
 });

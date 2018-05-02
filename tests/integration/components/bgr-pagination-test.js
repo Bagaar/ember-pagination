@@ -187,4 +187,46 @@ module('Integration | Component | bgr-pagination', function (hooks) {
 
     assert.equal(this.element.querySelector(BASE_CLASS), null);
   });
+
+  test('it renders the correct classes', async function (assert) {
+    const config = generateConfig({ totalRecords: 80 });
+
+    const baseClass = 'baseClass';
+    const breakClass = 'breakClass';
+    const disabledClass = 'disabledClass';
+    const itemClass = 'itemClass';
+    const linkClass = 'linkClass';
+
+    this.setProperties({
+      config,
+      baseClass,
+      breakClass,
+      disabledClass,
+      itemClass,
+      linkClass,
+    });
+
+    await render(hbs `{{bgr-pagination
+      config=config
+      baseClass=baseClass
+      breakClass=breakClass
+      disabledClass=disabledClass
+      itemClass=itemClass
+      linkClass=linkClass
+    }}`);
+
+    const items = this.element.querySelectorAll(`.${itemClass}`);
+
+    assert.ok(this.element.querySelector(`.${baseClass}`));
+    assert.equal(items[0].querySelector(`.${disabledClass}`).textContent.trim(), PREVIOUS_PAGE_LABEL);
+    assert.equal(items[1].querySelector(`.${linkClass}`).textContent.trim(), 1);
+    assert.equal(items[2].querySelector(`.${linkClass}`).textContent.trim(), 2);
+    assert.equal(items[3].querySelector(`.${linkClass}`).textContent.trim(), 3);
+    assert.equal(items[4].querySelector(`.${linkClass}`).textContent.trim(), 4);
+    assert.equal(items[5].querySelector(`.${linkClass}`).textContent.trim(), 5);
+    assert.equal(items[6].querySelector(`.${linkClass}`).textContent.trim(), 6);
+    assert.equal(items[7].querySelector(`.${breakClass}`).textContent.trim(), BREAK_LABEL);
+    assert.equal(items[8].querySelector(`.${linkClass}`).textContent.trim(), 8);
+    assert.equal(items[9].querySelector(`.${linkClass}`).textContent.trim(), NEXT_PAGE_LABEL);
+  });
 });

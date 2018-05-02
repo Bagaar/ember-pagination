@@ -2,13 +2,13 @@
   <ul class="{{baseClass}}">
     <li class="{{itemClass}}">
       {{#if previousPage}}
-        {{link-to previousPageLabel (query-params page=previousPage) class=linkClass}}
+        {{link-to previousPageLabel previousPageQueryParams class=linkClass}}
       {{else}}
         <span class="{{disabledClass}}">{{previousPageLabel}}</span>
       {{/if}}
     </li>
     <li class="{{itemClass}}">
-      {{link-to firstPage (query-params page=firstPage) class=linkClass}}
+      {{link-to firstPage firstPageQueryParams class=linkClass}}
     </li>
     {{#if showLowerBreak}}
       <li class="{{itemClass}}">
@@ -17,7 +17,7 @@
     {{/if}}
     {{#each pageRange as |page|}}
       <li class="{{itemClass}}">
-        {{link-to page (query-params page=page) class=linkClass}}
+        {{link-to page.number page.queryParams class=linkClass}}
       </li>
     {{/each}}
     {{#if showUpperBreak}}
@@ -26,11 +26,11 @@
       </li>
     {{/if}}
     <li class="{{itemClass}}">
-      {{link-to lastPage (query-params page=lastPage) class=linkClass}}
+      {{link-to lastPage lastPageQueryParams class=linkClass}}
     </li>
     <li class="{{itemClass}}">
       {{#if nextPage}}
-        {{link-to nextPageLabel (query-params page=nextPage) class=linkClass}}
+        {{link-to nextPageLabel nextPageQueryParams class=linkClass}}
       {{else}}
         <span class="{{disabledClass}}">{{nextPageLabel}}</span>
       {{/if}}
