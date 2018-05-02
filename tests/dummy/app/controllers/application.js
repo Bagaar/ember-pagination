@@ -3,14 +3,14 @@ import { computed } from '@ember/object';
 
 export default Controller.extend({
   /**
-   * State
+   * state
    */
 
   page: 1,
   queryParams: ['page'],
 
   /**
-   * Computed
+   * computed
    */
 
   config: computed('page', function () {
