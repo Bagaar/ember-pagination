@@ -15,6 +15,12 @@ module.exports = {
     browser: true
   },
   rules: {
+    'comma-dangle': ['error', 'always-multiline'],
+    'space-before-function-paren': ['error', {
+      'anonymous': 'always',
+      'asyncArrow': 'always',
+      'named': 'never'
+    }]
   },
   overrides: [
     // node files
