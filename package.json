@@ -1,6 +1,6 @@
 {
   "name": "bgr-ember-pagination",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Pagination component with out of the box support for JSON API.",
   "keywords": [
     "bagaar",
