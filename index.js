@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-  name: 'bgr-ember-pagination'
+  name: 'bgr-ember-pagination',
 };

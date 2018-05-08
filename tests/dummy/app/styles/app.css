@@ -5,6 +5,15 @@
   padding-left: 0;
 }
 
+.pagination::after, .pagination::before {
+  content: '';
+  display: table;
+}
+
+.pagination::after {
+  clear: both;
+}
+
 .pagination__item {
   float: left;
 }
@@ -13,7 +22,7 @@
   margin-right: 20px;
 }
 
-.pagination__disabled, .pagination__link {
+.pagination__break, .pagination__disabled, .pagination__link {
   color: black;
   font-family: sans-serif;
   font-size: 24px;
@@ -29,7 +38,7 @@
   font-weight: bold;
 }
 
-.pagination__disabled {
+.pagination__break, .pagination__disabled {
   cursor: default;
   opacity: .4;
 }

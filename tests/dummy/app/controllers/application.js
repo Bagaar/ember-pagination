@@ -3,21 +3,21 @@ import { computed } from '@ember/object';
 
 export default Controller.extend({
   /**
-   * State
+   * state
    */
 
   page: 1,
   queryParams: ['page'],
 
   /**
-   * Computed
+   * computed
    */
 
   config: computed('page', function () {
     const activePage = parseInt(this.get('page'), 10);
     const firstPage = 1;
     const perPage = 10;
-    const totalRecords = 80;
+    const totalRecords = 90;
     const lastPage = Math.ceil(totalRecords / perPage);
 
     return {

@@ -1,0 +1,22 @@
+stages:
+  - test
+
+test-addon:
+  image: git.bagaar.be:4567/docker/nodejs:8.9.1
+  only:
+    - develop
+  script:
+    # install chrome
+    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+    - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
+    - apt-get update -yqqq
+    - apt-get install -y google-chrome-stable > /dev/null 2>&1
+
+    # install dependencies
+    - npm install --silent
+
+    # run tests
+    - ./node_modules/.bin/ember test
+  stage: test
+  tags:
+    - docker-ci
