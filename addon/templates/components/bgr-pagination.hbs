@@ -1,37 +1,39 @@
-<li class="pagination__item">
-  {{#if isFirstPage}}
-    <span class="pagination__disabled">{{{firstPageContent}}}</span>
-  {{else}}
-    {{{link-to firstPageContent (query-params page=firstPage) class="pagination__link"}}}
-  {{/if}}
-</li>
-
-<li class="pagination__item">
-  {{#if previousPage}}
-    {{{link-to previousPageContent (query-params page=previousPage) class="pagination__link"}}}
-  {{else}}
-    <span class="pagination__disabled">{{{previousPageContent}}}</span>
-  {{/if}}
-</li>
-
-{{#each pages as |page|}}
-  <li class="pagination__item">
-    {{link-to page (query-params page=page) class="pagination__link"}}
-  </li>
-{{/each}}
-
-<li class="pagination__item">
-  {{#if nextPage}}
-    {{{link-to nextPageContent (query-params page=nextPage) class="pagination__link"}}}
-  {{else}}
-    <span class="pagination__disabled">{{{nextPageContent}}}</span>
-  {{/if}}
-</li>
-
-<li class="pagination__item">
-  {{#if isLastPage}}
-    <span class="pagination__disabled">{{{lastPageContent}}}</span>
-  {{else}}
-    {{{link-to lastPageContent (query-params page=lastPage) class="pagination__link"}}}
-  {{/if}}
-</li>
+{{#if showPagination}}
+  <ul class="{{baseClass}}">
+    <li class="{{itemClass}}">
+      {{#if previousPage}}
+        {{link-to previousPageLabel previousPageQueryParams class=linkClass}}
+      {{else}}
+        <span class="{{disabledClass}}">{{previousPageLabel}}</span>
+      {{/if}}
+    </li>
+    <li class="{{itemClass}}">
+      {{link-to firstPage firstPageQueryParams class=linkClass}}
+    </li>
+    {{#if showLowerBreak}}
+      <li class="{{itemClass}}">
+        <span class="{{breakClass}}">{{breakLabel}}</span>
+      </li>
+    {{/if}}
+    {{#each pageRange as |page|}}
+      <li class="{{itemClass}}">
+        {{link-to page.number page.queryParams class=linkClass}}
+      </li>
+    {{/each}}
+    {{#if showUpperBreak}}
+      <li class="{{itemClass}}">
+        <span class="{{breakClass}}">{{breakLabel}}</span>
+      </li>
+    {{/if}}
+    <li class="{{itemClass}}">
+      {{link-to lastPage lastPageQueryParams class=linkClass}}
+    </li>
+    <li class="{{itemClass}}">
+      {{#if nextPage}}
+        {{link-to nextPageLabel nextPageQueryParams class=linkClass}}
+      {{else}}
+        <span class="{{disabledClass}}">{{nextPageLabel}}</span>
+      {{/if}}
+    </li>
+  </ul>
+{{/if}}
