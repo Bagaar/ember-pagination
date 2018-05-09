@@ -2,9 +2,9 @@
   <ul class="{{baseClass}}">
     <li class="{{itemClass}}">
       {{#if previousPage}}
-        {{link-to previousPageLabel previousPageQueryParams class=linkClass}}
+        {{{link-to previousPageLabel previousPageQueryParams class=linkClass}}}
       {{else}}
-        <span class="{{disabledClass}}">{{previousPageLabel}}</span>
+        <span class="{{disabledClass}}">{{{previousPageLabel}}}</span>
       {{/if}}
     </li>
     <li class="{{itemClass}}">
@@ -12,7 +12,7 @@
     </li>
     {{#if showLowerBreak}}
       <li class="{{itemClass}}">
-        <span class="{{breakClass}}">{{breakLabel}}</span>
+        <span class="{{breakClass}}">{{{breakLabel}}}</span>
       </li>
     {{/if}}
     {{#each pageRange as |page|}}
@@ -22,7 +22,7 @@
     {{/each}}
     {{#if showUpperBreak}}
       <li class="{{itemClass}}">
-        <span class="{{breakClass}}">{{breakLabel}}</span>
+        <span class="{{breakClass}}">{{{breakLabel}}}</span>
       </li>
     {{/if}}
     <li class="{{itemClass}}">
@@ -30,9 +30,9 @@
     </li>
     <li class="{{itemClass}}">
       {{#if nextPage}}
-        {{link-to nextPageLabel nextPageQueryParams class=linkClass}}
+        {{{link-to nextPageLabel nextPageQueryParams class=linkClass}}}
       {{else}}
-        <span class="{{disabledClass}}">{{nextPageLabel}}</span>
+        <span class="{{disabledClass}}">{{{nextPageLabel}}}</span>
       {{/if}}
     </li>
   </ul>
