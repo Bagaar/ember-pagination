@@ -2,7 +2,9 @@
   <ul class="{{baseClass}}">
     <li class="{{itemClass}}">
       {{#if previousPage}}
-        {{{link-to previousPageLabel previousPageQueryParams class=linkClass}}}
+        {{#link-to previousPageQueryParams class=linkClass}}
+          {{{previousPageLabel}}}
+        {{/link-to}}
       {{else}}
         <span class="{{disabledClass}}">{{{previousPageLabel}}}</span>
       {{/if}}
@@ -30,7 +32,9 @@
     </li>
     <li class="{{itemClass}}">
       {{#if nextPage}}
-        {{{link-to nextPageLabel nextPageQueryParams class=linkClass}}}
+        {{#link-to nextPageQueryParams class=linkClass}}
+          {{{nextPageLabel}}}
+        {{/link-to}}
       {{else}}
         <span class="{{disabledClass}}">{{{nextPageLabel}}}</span>
       {{/if}}
