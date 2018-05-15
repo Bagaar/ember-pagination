@@ -1,13 +1,11 @@
-import generateConfig from 'dummy/utils/generate-config';
+import generateConfig from 'bgr-ember-pagination/utils/generate-config';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | generateConfig', function () {
-
   test('it works with sensible defaults', function (assert) {
     let config = generateConfig();
 
-    assert.ok(config);
-    assert.deepEqual(config, {
+    assert.propEqual(config, {
       activePage: 1,
       firstPage: 1,
       lastPage: 7,
@@ -25,8 +23,7 @@ module('Unit | Utility | generateConfig', function () {
       totalRecords: 50,
     });
 
-    assert.ok(config);
-    assert.deepEqual(config, {
+    assert.propEqual(config, {
       activePage: 2,
       firstPage: 1,
       lastPage: 10,
