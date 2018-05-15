@@ -9,19 +9,13 @@ module.exports = {
   ],
   extends: [
     'eslint:recommended',
-    'plugin:ember/recommended'
+    'plugin:ember/recommended',
+    '.eslintrc-bgr.js'
   ],
   env: {
     browser: true
   },
-  rules: {
-    'comma-dangle': ['error', 'always-multiline'],
-    'space-before-function-paren': ['error', {
-      'anonymous': 'always',
-      'asyncArrow': 'always',
-      'named': 'never'
-    }]
-  },
+  rules: {},
   overrides: [
     // node files
     {
