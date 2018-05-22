@@ -9,8 +9,8 @@
 .eslintrc.js
 .gitignore
 .gitlab-ci.yml
-.watchmanconfig
 .travis.yml
+.watchmanconfig
 ember-cli-build.js
 testem.js
 
