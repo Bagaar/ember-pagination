@@ -8,7 +8,6 @@
 .editorconfig
 .ember-cli
 .eslintignore
-.eslintrc-bgr.js
 .eslintrc.js
 .gitignore
 .gitlab-ci.yml

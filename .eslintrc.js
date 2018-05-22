@@ -10,7 +10,7 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:ember/recommended',
-    '.eslintrc-bgr.js'
+    'bgr-ember'
   ],
   env: {
     browser: true
