@@ -6,8 +6,8 @@ export default Controller.extend({
    * state
    */
 
-  page: 1,
   queryParams: ['page'],
+  page: 1,
 
   /**
    * computed

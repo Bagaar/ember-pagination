@@ -10,11 +10,16 @@ test-addon:
     - apt-get update -yqqq
     - apt-get install -y google-chrome-stable > /dev/null 2>&1
 
+    # write .env file
+    # - echo "$ENV_FILE" > .env
+    # - sed -i 's/\r /\n/g' .env
+
     # install dependencies
     - npm install --silent
 
     # run tests
-    - ./node_modules/.bin/ember test
+    # - npm run nodetest
+    - npm run test
   stage: test
   tags:
     - docker-ci
