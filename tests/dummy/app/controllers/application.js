@@ -14,11 +14,11 @@ export default Controller.extend({
    */
 
   config: computed('page', function () {
-    const activePage = parseInt(this.get('page'), 10);
-    const firstPage = 1;
-    const perPage = 10;
-    const totalRecords = 90;
-    const lastPage = Math.ceil(totalRecords / perPage);
+    let activePage = parseInt(this.get('page'), 10);
+    let firstPage = 1;
+    let perPage = 10;
+    let totalRecords = 90;
+    let lastPage = Math.ceil(totalRecords / perPage);
 
     return {
       activePage,

@@ -61,19 +61,19 @@ export default Component.extend({
   }),
 
   pageRange: computed('activePage', '_pageRangeDisplayed', 'pageRangeLowerLimit', 'pageRangeUpperLimit', 'totalPages', function () {
-    const pageRangeDisplayed = this.get('_pageRangeDisplayed');
-    const pageRangeLowerLimit = this.get('pageRangeLowerLimit');
-    const pageRangeUpperLimit = this.get('pageRangeUpperLimit');
-    const totalPages = this.get('totalPages');
-    const pageRange = [];
+    let pageRangeDisplayed = this.get('_pageRangeDisplayed');
+    let pageRangeLowerLimit = this.get('pageRangeLowerLimit');
+    let pageRangeUpperLimit = this.get('pageRangeUpperLimit');
+    let totalPages = this.get('totalPages');
 
+    let pageRange = [];
     let pageRangeStart = pageRangeLowerLimit;
     let pageRangeEnd = pageRangeUpperLimit;
 
     // - 2 = first and last page not included
     if (pageRangeDisplayed && pageRangeDisplayed < totalPages - 2) {
-      const activePage = this.get('activePage');
-      const pageRangeOffset = Math.floor(pageRangeDisplayed / 2);
+      let activePage = this.get('activePage');
+      let pageRangeOffset = Math.floor(pageRangeDisplayed / 2);
 
       pageRangeStart = activePage - pageRangeOffset;
       pageRangeEnd = activePage + pageRangeOffset;
@@ -115,13 +115,13 @@ export default Component.extend({
   }),
 
   showLowerBreak: computed('pageRange', 'pageRangeLowerLimit', function () {
-    const pageRange = this.get('pageRange');
+    let pageRange = this.get('pageRange');
 
     return pageRange.length && pageRange[0].number !== this.get('pageRangeLowerLimit');
   }),
 
   showUpperBreak: computed('pageRange', 'pageRangeUpperLimit', function () {
-    const pageRange = this.get('pageRange');
+    let pageRange = this.get('pageRange');
 
     return pageRange.length && pageRange[pageRange.length - 1].number !== this.get('pageRangeUpperLimit');
   }),
@@ -131,10 +131,10 @@ export default Component.extend({
   }),
 
   totalPages: computed('perPage', 'totalRecords', function () {
-    const perPage = this.get('perPage');
-    const totalRecords = this.get('totalRecords');
+    let perPage = this.get('perPage');
+    let totalRecords = this.get('totalRecords');
 
-    const totalPages = Math.ceil(totalRecords / perPage);
+    let totalPages = Math.ceil(totalRecords / perPage);
 
     return isNaN(totalPages) ? 0 : totalPages;
   }),
@@ -144,8 +144,8 @@ export default Component.extend({
    */
 
   createQueryParams(value) {
-    const key = this.get('queryParam');
-    const values = {
+    let key = this.get('queryParam');
+    let values = {
       [key]: value,
     };
 

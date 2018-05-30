@@ -3,12 +3,12 @@ export default function generateConfig({
   perPage = 10,
   totalRecords = 70,
 } = {}) {
-  const active = parseInt(activePage, 10);
-  const per = parseInt(perPage, 10);
-  const total = parseInt(totalRecords, 10);
+  let active = parseInt(activePage, 10);
+  let per = parseInt(perPage, 10);
+  let total = parseInt(totalRecords, 10);
 
-  const firstPage = 1;
-  const lastPage = Math.ceil(total / per);
+  let firstPage = 1;
+  let lastPage = Math.ceil(total / per);
 
   return {
     activePage: active,
