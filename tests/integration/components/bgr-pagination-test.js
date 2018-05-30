@@ -22,7 +22,7 @@ module('Integration | Component | bgr-pagination', function (hooks) {
 
     await render(hbs `{{bgr-pagination config=config}}`);
 
-    const items = this.element.querySelectorAll(ITEM_CLASS);
+    let items = this.element.querySelectorAll(ITEM_CLASS);
 
     assert.equal(items[0].querySelector(DISABLED_CLASS).textContent.trim(), PREVIOUS_PAGE_LABEL);
     assert.equal(items[1].querySelector(LINK_CLASS).textContent.trim(), 1);
@@ -40,7 +40,7 @@ module('Integration | Component | bgr-pagination', function (hooks) {
 
     await render(hbs `{{bgr-pagination config=config}}`);
 
-    const items = this.element.querySelectorAll(ITEM_CLASS);
+    let items = this.element.querySelectorAll(ITEM_CLASS);
 
     assert.equal(items[0].querySelector(DISABLED_CLASS).textContent.trim(), PREVIOUS_PAGE_LABEL);
     assert.equal(items[1].querySelector(LINK_CLASS).textContent.trim(), 1);
@@ -59,7 +59,7 @@ module('Integration | Component | bgr-pagination', function (hooks) {
 
     await render(hbs `{{bgr-pagination config=config}}`);
 
-    const items = this.element.querySelectorAll(ITEM_CLASS);
+    let items = this.element.querySelectorAll(ITEM_CLASS);
 
     assert.equal(items[0].querySelector(LINK_CLASS).textContent.trim(), PREVIOUS_PAGE_LABEL);
     assert.equal(items[1].querySelector(LINK_CLASS).textContent.trim(), 1);
@@ -78,7 +78,7 @@ module('Integration | Component | bgr-pagination', function (hooks) {
 
     await render(hbs `{{bgr-pagination config=config}}`);
 
-    const items = this.element.querySelectorAll(ITEM_CLASS);
+    let items = this.element.querySelectorAll(ITEM_CLASS);
 
     assert.equal(items[0].querySelector(LINK_CLASS).textContent.trim(), PREVIOUS_PAGE_LABEL);
     assert.equal(items[1].querySelector(LINK_CLASS).textContent.trim(), 1);
@@ -98,7 +98,7 @@ module('Integration | Component | bgr-pagination', function (hooks) {
 
     await render(hbs `{{bgr-pagination config=config pageRangeDisplayed=3}}`);
 
-    const items = this.element.querySelectorAll(ITEM_CLASS);
+    let items = this.element.querySelectorAll(ITEM_CLASS);
 
     assert.equal(items[0].querySelector(LINK_CLASS).textContent.trim(), PREVIOUS_PAGE_LABEL);
     assert.equal(items[1].querySelector(LINK_CLASS).textContent.trim(), 1);
@@ -116,7 +116,7 @@ module('Integration | Component | bgr-pagination', function (hooks) {
 
     await render(hbs `{{bgr-pagination config=config pageRangeDisplayed=null}}`);
 
-    const items = this.element.querySelectorAll(ITEM_CLASS);
+    let items = this.element.querySelectorAll(ITEM_CLASS);
 
     assert.equal(items[0].querySelector(DISABLED_CLASS).textContent.trim(), PREVIOUS_PAGE_LABEL);
     assert.equal(items[1].querySelector(LINK_CLASS).textContent.trim(), 1);
@@ -127,11 +127,11 @@ module('Integration | Component | bgr-pagination', function (hooks) {
   });
 
   test('it renders the correct labels', async function (assert) {
-    const config = generateConfig({ activePage: 5, totalRecords: 90 });
+    let config = generateConfig({ activePage: 5, totalRecords: 90 });
 
-    const breakLabel = 'break';
-    const nextPageLabel = 'next';
-    const previousPageLabel = 'previous';
+    let breakLabel = 'break';
+    let nextPageLabel = 'next';
+    let previousPageLabel = 'previous';
 
     this.setProperties({
       config,
@@ -147,7 +147,7 @@ module('Integration | Component | bgr-pagination', function (hooks) {
       previousPageLabel=previousPageLabel
     }}`);
 
-    const items = this.element.querySelectorAll(ITEM_CLASS);
+    let items = this.element.querySelectorAll(ITEM_CLASS);
 
     assert.equal(items[0].querySelector(LINK_CLASS).textContent.trim(), previousPageLabel);
     assert.equal(items[1].querySelector(LINK_CLASS).textContent.trim(), 1);
@@ -171,13 +171,13 @@ module('Integration | Component | bgr-pagination', function (hooks) {
   });
 
   test('it renders the correct classes', async function (assert) {
-    const config = generateConfig({ totalRecords: 80 });
+    let config = generateConfig({ totalRecords: 80 });
 
-    const baseClass = 'baseClass';
-    const breakClass = 'breakClass';
-    const disabledClass = 'disabledClass';
-    const itemClass = 'itemClass';
-    const linkClass = 'linkClass';
+    let baseClass = 'baseClass';
+    let breakClass = 'breakClass';
+    let disabledClass = 'disabledClass';
+    let itemClass = 'itemClass';
+    let linkClass = 'linkClass';
 
     this.setProperties({
       config,
@@ -197,7 +197,7 @@ module('Integration | Component | bgr-pagination', function (hooks) {
       linkClass=linkClass
     }}`);
 
-    const items = this.element.querySelectorAll(`.${itemClass}`);
+    let items = this.element.querySelectorAll(`.${itemClass}`);
 
     assert.ok(this.element.querySelector(`.${baseClass}`));
     assert.equal(items[0].querySelector(`.${disabledClass}`).textContent.trim(), PREVIOUS_PAGE_LABEL);

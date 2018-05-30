@@ -1,12 +1,17 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
+import generateConfig from 'bgr-ember-pagination/utils/generate-config';
 
 export default Controller.extend({
   /**
    * state
    */
 
-  queryParams: ['page'],
+  queryParams: [{
+    page: {
+      type: 'number',
+    },
+  }],
   page: 1,
 
   /**
@@ -14,20 +19,8 @@ export default Controller.extend({
    */
 
   config: computed('page', function () {
-    const activePage = parseInt(this.get('page'), 10);
-    const firstPage = 1;
-    const perPage = 10;
-    const totalRecords = 90;
-    const lastPage = Math.ceil(totalRecords / perPage);
-
-    return {
-      activePage,
-      firstPage,
-      lastPage,
-      nextPage: activePage < lastPage ? Math.max(activePage + 1, firstPage) : null,
-      perPage,
-      previousPage: activePage > firstPage ? Math.min(activePage - 1, lastPage) : null,
-      totalRecords,
-    };
+    return generateConfig({
+      activePage: this.get('page'),
+    });
   }),
 });

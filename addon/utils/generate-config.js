@@ -3,16 +3,20 @@ export default function generateConfig({
   perPage = 10,
   totalRecords = 70,
 } = {}) {
-  const firstPage = 1;
-  const lastPage = Math.ceil(totalRecords / perPage);
+  let active = parseInt(activePage, 10);
+  let per = parseInt(perPage, 10);
+  let total = parseInt(totalRecords, 10);
+
+  let firstPage = 1;
+  let lastPage = Math.ceil(total / per);
 
   return {
-    activePage,
+    activePage: active,
     firstPage,
     lastPage,
-    nextPage: activePage < lastPage ? Math.max(activePage + 1, firstPage) : null,
-    perPage,
-    previousPage: activePage > firstPage ? Math.min(activePage - 1, lastPage) : null,
-    totalRecords,
+    nextPage: active < lastPage ? Math.max(active + 1, firstPage) : null,
+    perPage: per,
+    previousPage: active > firstPage ? Math.min(active - 1, lastPage) : null,
+    totalRecords: total,
   };
 }
