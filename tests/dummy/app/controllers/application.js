@@ -23,6 +23,7 @@ export default Controller.extend({
   config: computed('page', function () {
     return generateConfig({
       activePage: this.get('page'),
+      totalRecords: 107,
     });
   }),
 });
