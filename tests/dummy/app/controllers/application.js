@@ -1,3 +1,5 @@
+/* eslint-disable ember/alias-model-in-controller */
+
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 import generateConfig from 'bgr-ember-pagination/utils/generate-config';

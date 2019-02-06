@@ -29,9 +29,10 @@
     "ember-cli-htmlbars": "^3.0.0"
   },
   "devDependencies": {
+    "@bagaar/eslint-config": "^0.5.1",
+    "@bagaar/eslint-config-ember": "^0.5.0",
     "@ember/optional-features": "^0.7.0",
     "bgr-ember-addon-blueprint": "^0.1.3",
-    "bgr-ember-lint": "^0.8.2",
     "broccoli-asset-rev": "^3.0.0",
     "ember-cli": "~3.4.4",
     "ember-cli-dependency-checker": "^3.0.0",
@@ -50,12 +51,10 @@
     "ember-source": "~3.4.0",
     "ember-source-channel-url": "^1.1.0",
     "ember-try": "^1.0.0",
-    "eslint-config-bgr": "^0.3.1",
-    "eslint-config-bgr-ember": "^0.2.2",
-    "eslint-plugin-ember": "^6.1.0",
+    "eslint-plugin-ember": "^6.2.0",
     "eslint-plugin-node": "^8.0.1",
     "husky": "^1.3.1",
-    "lint-staged": "^8.1.0",
+    "lint-staged": "^8.1.3",
     "loader.js": "^4.7.0",
     "qunit-dom": "^0.8.4"
   },
