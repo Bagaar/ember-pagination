@@ -1,0 +1,56 @@
+<PaginationData
+  @currentPage={{this.currentPage}}
+  @itemsPerPage={{this.itemsPerPage}}
+  @totalItems={{this.totalItems}}
+  @pageRange={{this.pageRange}}
+  @pageMargins={{this.pageMargins}}
+  as |pagination|
+>
+  <ul ...attributes>
+    {{yield (hash
+      previous=(component "PaginationActionItem" isDisabled=pagination.isFirstPage)
+      paginationData=pagination
+    )}}
+
+    {{#each pagination.startMarginPages as |page|}}
+      {{yield (hash
+        page=(component "PaginationPageItem" currentPage=pagination.currentPage page=page)
+        paginationData=pagination
+      )}}
+    {{/each}}
+
+    {{#if pagination.shouldShowLowerBreak}}
+      {{yield (hash
+        break=(component "NamedBlock" tagName="li")
+        paginationData=pagination
+      )}}
+    {{/if}}
+
+    {{#each pagination.pageRangePages as |page|}}
+      {{yield (hash
+        page=(component "PaginationPageItem" currentPage=pagination.currentPage page=page)
+        paginationData=pagination
+      )}}
+    {{/each}}
+
+    {{#if pagination.shouldShowUpperBreak}}
+      {{yield (hash
+        break=(component "NamedBlock" tagName="li")
+        paginationData=pagination
+      )}}
+    {{/if}}
+
+    {{#each pagination.endMarginPages as |page|}}
+      {{yield (hash
+        page=(component "PaginationPageItem" currentPage=pagination.currentPage page=page)
+        pageNumber=page
+        paginationData=pagination
+      )}}
+    {{/each}}
+
+    {{yield (hash
+      next=(component "PaginationActionItem" isDisabled=pagination.isLastPage)
+      paginationData=pagination
+    )}}
+  </ul>
+</PaginationData>

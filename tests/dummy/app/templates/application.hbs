@@ -87,3 +87,61 @@
     <dd>{{data.shouldShowUpperBreak}}</dd>
   </dl>
 </PaginationData>
+
+<h2>Pagination</h2>
+{{!-- This is an example of how to use the Pagination component to act exactly the same as the BgrPagination component --}}
+<Pagination
+  @currentPage={{this.config.activePage}}
+  @totalItems={{this.config.totalRecords}}
+  @itemsPerPage={{this.config.perPage}}
+  class="pagination"
+  as |p|
+>
+  <p.previous class="pagination__item" as |isDisabled|>
+    {{#if isDisabled}}
+      <span class="pagination__disabled">
+        {{"<"}}
+      </span>
+    {{else}}
+      {{#link-to
+        "index"
+        (query-params page=p.paginationData.previousPage)
+        class="pagination__link"
+      }}
+        {{"<"}}
+      {{/link-to}}
+    {{/if}}
+  </p.previous>
+
+  <p.page class="pagination__item" as |pageNumber isActive|>
+    {{#link-to
+      "index"
+      (query-params page=pageNumber)
+      class=(concat "pagination__link" (if isActive " pagination__link--active"))
+    }}
+      {{pageNumber}}
+    {{/link-to}}
+  </p.page>
+
+  <p.break class="pagination__item">
+    <span class="pagination__break">
+      ...
+    </span>
+  </p.break>
+
+  <p.next class="pagination__item" as |isDisabled|>
+    {{#if isDisabled}}
+      <span class="pagination__disabled">
+        {{">"}}
+      </span>
+    {{else}}
+      {{#link-to
+        "index"
+        (query-params page=p.paginationData.nextPage)
+        class="pagination__link"
+      }}
+        {{">"}}
+      {{/link-to}}
+    {{/if}}
+  </p.next>
+</Pagination>
