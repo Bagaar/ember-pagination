@@ -1,42 +1,44 @@
+{{! template-lint-disable no-triple-curlies }}
+
 {{#if showPagination}}
-  <ul class="{{baseClass}}">
-    <li class="{{itemClass}}">
+  <ul class={{baseClass}}>
+    <li class={{itemClass}}>
       {{#if previousPage}}
         {{#link-to previousPageQueryParams class=linkClass}}
           {{{previousPageLabel}}}
         {{/link-to}}
       {{else}}
-        <span class="{{disabledClass}}">{{{previousPageLabel}}}</span>
+        <span class={{disabledClass}}>{{{previousPageLabel}}}</span>
       {{/if}}
     </li>
-    <li class="{{itemClass}}">
+    <li class={{itemClass}}>
       {{link-to firstPage firstPageQueryParams class=linkClass}}
     </li>
     {{#if showLowerBreak}}
-      <li class="{{itemClass}}">
-        <span class="{{breakClass}}">{{{breakLabel}}}</span>
+      <li class={{itemClass}}>
+        <span class={{breakClass}}>{{{breakLabel}}}</span>
       </li>
     {{/if}}
     {{#each pageRange as |page|}}
-      <li class="{{itemClass}}">
+      <li class={{itemClass}}>
         {{link-to page.number page.queryParams class=linkClass}}
       </li>
     {{/each}}
     {{#if showUpperBreak}}
-      <li class="{{itemClass}}">
-        <span class="{{breakClass}}">{{{breakLabel}}}</span>
+      <li class={{itemClass}}>
+        <span class={{breakClass}}>{{{breakLabel}}}</span>
       </li>
     {{/if}}
-    <li class="{{itemClass}}">
+    <li class={{itemClass}}>
       {{link-to lastPage lastPageQueryParams class=linkClass}}
     </li>
-    <li class="{{itemClass}}">
+    <li class={{itemClass}}>
       {{#if nextPage}}
         {{#link-to nextPageQueryParams class=linkClass}}
           {{{nextPageLabel}}}
         {{/link-to}}
       {{else}}
-        <span class="{{disabledClass}}">{{{nextPageLabel}}}</span>
+        <span class={{disabledClass}}>{{{nextPageLabel}}}</span>
       {{/if}}
     </li>
   </ul>

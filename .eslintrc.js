@@ -10,7 +10,8 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:ember/recommended',
-    'bgr-ember'
+    '@bagaar/eslint-config',
+    '@bagaar/eslint-config-ember'
   ],
   env: {
     browser: true
@@ -20,6 +21,7 @@ module.exports = {
     // node files
     {
       files: [
+        '.template-lintrc.js',
         'ember-cli-build.js',
         'index.js',
         'testem.js',

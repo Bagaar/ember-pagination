@@ -27,3 +27,63 @@
   <div>Page Range Displayed: null</div>
   {{bgr-pagination config=config pageRangeDisplayed=null}}
 </div>
+
+<h2>PaginationData</h2>
+<PaginationData
+  @currentPage={{this.config.activePage}}
+  @totalItems={{this.config.totalRecords}}
+  @itemsPerPage={{this.config.perPage}}
+  @pageRange={{3}}
+  @pageMargins={{2}}
+  as |data|
+>
+  <dl>
+    <dt>pageRange</dt>
+    <dd>3</dd>
+
+    <dt>pageMargins</dt>
+    <dd>2</dd>
+
+    <dt>data.previousPage</dt>
+    <dd>{{data.previousPage}}</dd>
+
+    <dt>data.currentPage</dt>
+    <dd>{{data.currentPage}}</dd>
+
+    <dt>data.nextPage</dt>
+    <dd>{{data.nextPage}}</dd>
+
+    <dt>data.lastPage</dt>
+    <dd>{{data.lastPage}}</dd>
+
+    <dt>data.isFirstPage</dt>
+    <dd>{{data.isFirstPage}}</dd>
+
+    <dt>data.isLastPage</dt>
+    <dd>{{data.isLastPage}}</dd>
+
+    <dt>data.totalPages</dt>
+    <dd>{{data.totalPages}}</dd>
+
+    <dt>data.activeItems</dt>
+    <dd>{{data.activeItems}}</dd>
+
+    <dt>data.allPages</dt>
+    <dd>{{data.allPages}}</dd>
+
+    <dt>data.startMarginPages</dt>
+    <dd>{{data.startMarginPages}}</dd>
+
+    <dt>data.pageRangePages</dt>
+    <dd>{{data.pageRangePages}}</dd>
+
+    <dt>data.endMarginPages</dt>
+    <dd>{{data.endMarginPages}}</dd>
+
+    <dt>data.shouldShowLowerBreak</dt>
+    <dd>{{data.shouldShowLowerBreak}}</dd>
+
+    <dt>data.shouldShowUpperBreak</dt>
+    <dd>{{data.shouldShowUpperBreak}}</dd>
+  </dl>
+</PaginationData>
