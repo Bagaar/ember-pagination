@@ -286,6 +286,17 @@ module('Unit | Component | pagination-data', function (hooks) {
     assert.ok(component.shouldShowLowerBreak);
   });
 
+  test(`shouldShowLowerBreak always returns false if there are not enough pages`, function (assert) {
+    let component = this.owner.factoryFor('component:pagination-data').create({
+      itemsPerPage: 10,
+      totalItems: 20,
+      currentPage: 1,
+      pageRange: 3,
+    });
+
+    assert.notOk(component.shouldShowLowerBreak);
+  });
+
   test(`shouldShowLowerBreak always returns false if pageRange is not set`, function (assert) {
     let component = this.owner.factoryFor('component:pagination-data').create({
       itemsPerPage: 10,
@@ -323,6 +334,17 @@ module('Unit | Component | pagination-data', function (hooks) {
 
     component.set('currentPage', 5);
     assert.ok(component.shouldShowUpperBreak);
+  });
+
+  test(`shouldShowUpperBreak always returns false if there are not enough pages`, function (assert) {
+    let component = this.owner.factoryFor('component:pagination-data').create({
+      itemsPerPage: 10,
+      totalItems: 20,
+      currentPage: 1,
+      pageRange: 3,
+    });
+
+    assert.notOk(component.shouldShowUpperBreak);
   });
 
   test(`shouldShowUpperBreak always returns false if pageRange is not set`, function (assert) {
