@@ -85,13 +85,12 @@ export default Component.extend({
     'totalPages',
     function () {
       let pageRange = this.pageRange;
-      let totalPages = this.totalPages;
 
       if (!pageRange) {
         return null;
       }
 
-      if (totalPages < this.pageMarginsThreshold) {
+      if (this.totalPages < this.pageMarginsThreshold) {
         return this.allPages;
       }
 
@@ -138,16 +137,24 @@ export default Component.extend({
     return range(this.pageRangeUpperLimit + 1, this.totalPages);
   }),
 
-  shouldShowLowerBreak: computed('pageRange', 'pageRangePages', 'pageRangeLowerLimit', function () {
+  shouldShowLowerBreak: computed('pageRange', 'pageRangePages', 'pageRangeLowerLimit', 'pageMarginsThreshold', 'totalPages', function () {
     if (!this.pageRange) {
+      return false;
+    }
+
+    if (this.totalPages < this.pageMarginsThreshold) {
       return false;
     }
 
     return this.pageRangePages.length && this.pageRangePages[0] !== this.pageRangeLowerLimit;
   }),
 
-  shouldShowUpperBreak: computed('pageRange', 'pageRangePages', 'pageRangeUpperLimit', function () {
+  shouldShowUpperBreak: computed('pageRange', 'pageRangePages', 'pageRangeUpperLimit', 'pageMarginsThreshold', 'totalPages', function () {
     if (!this.pageRange) {
+      return false;
+    }
+
+    if (this.totalPages < this.pageMarginsThreshold) {
       return false;
     }
 
