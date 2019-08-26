@@ -1,34 +1,4 @@
-<div>
-  <div>Page Range Displayed: 5</div>
-  {{bgr-pagination config=config}}
-</div>
-
-<div>
-  <div>Page Range Displayed: 3</div>
-  {{bgr-pagination config=config pageRangeDisplayed=3}}
-</div>
-
-<div>
-  <div>Page Range Displayed: 2</div>
-  {{bgr-pagination config=config pageRangeDisplayed=2}}
-</div>
-
-<div>
-  <div>Page Range Displayed: 7</div>
-  {{bgr-pagination config=config pageRangeDisplayed=7}}
-</div>
-
-<div>
-  <div>Page Range Displayed: 0</div>
-  {{bgr-pagination config=config pageRangeDisplayed=0}}
-</div>
-
-<div>
-  <div>Page Range Displayed: null</div>
-  {{bgr-pagination config=config pageRangeDisplayed=null}}
-</div>
-
-<h2>PaginationData</h2>
+<h1>PaginationData</h1>
 <PaginationData
   @currentPage={{this.config.activePage}}
   @totalItems={{this.config.totalRecords}}
