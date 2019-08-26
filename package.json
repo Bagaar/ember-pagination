@@ -1,15 +1,13 @@
 {
   "name": "bgr-ember-pagination",
   "version": "0.5.1",
-  "description": "Pagination component with out of the box support for JSON API.",
+  "description": "Pagination component",
   "keywords": [
     "bagaar",
-    "bgr",
     "ember-addon",
-    "json-api",
     "pagination"
   ],
-  "repository": "https://git.bagaar.be/shelf/bgr-ember-pagination",
+  "repository": "https://github.com/Bagaar/ember-pagination",
   "license": "MIT",
   "author": "Bagaar",
   "directories": {
