@@ -1,9 +1,10 @@
 {
-  "name": "bgr-ember-pagination",
+  "name": "@bagaar/ember-pagination",
   "version": "0.5.1",
-  "description": "Pagination component",
+  "description": "Easy customisable pagination component for Ember applications.",
   "keywords": [
     "bagaar",
+    "ember",
     "ember-addon",
     "pagination"
   ],

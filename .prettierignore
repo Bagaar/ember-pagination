@@ -2,6 +2,6 @@
 /blueprints/*/files/
 /vendor/
 
- # compiled output
+# compiled output
 /dist/
 /tmp/
