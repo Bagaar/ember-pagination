@@ -4,6 +4,7 @@
   "description": "Easy customisable pagination component for Ember applications.",
   "keywords": [
     "bagaar",
+    "ember",
     "ember-addon",
     "pagination"
   ],
