@@ -1,7 +1,7 @@
 import Component from '@ember/component'
+import { assert } from '@ember/debug'
 import { computed } from '@ember/object'
 import { alias } from '@ember/object/computed'
-import { assert } from '@ember/debug'
 import layout from '../templates/components/pagination-data'
 
 const DISABLED = null
