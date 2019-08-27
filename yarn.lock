@@ -765,11 +765,6 @@
   resolved "https://npm.bagaar.be/@bagaar%2feslint-config-ember/-/eslint-config-ember-0.5.0.tgz#d3c7950790a253fd0f839e50b47b61a97358acbf"
   integrity sha512-LHzhKQh+BKmgAi6rANBkDhM43XfW3xVtOpsxQDgsm25DL+KBvWUiz7q0hntu8a0D7pdmGLVLAb2IGyXI49osLg==
 
-"@bagaar/eslint-config@^0.5.1":
-  version "0.5.1"
-  resolved "https://npm.bagaar.be/@bagaar%2feslint-config/-/eslint-config-0.5.1.tgz#236bfb7da94e66b79aadc69102a3dea5ba94d1a5"
-  integrity sha512-mwNRwrXHnyJcM7WQGZeTHbwqpc6xEePxu9NC553UV/whYDOKMPbpj3qjSRvkYKJqyJHNU6o0EPxV5EAoiloMDQ==
-
 "@cnakazawa/watch@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.3.tgz#099139eaec7ebf07a27c1786a3ff64f39464d2ef"
