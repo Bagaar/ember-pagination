@@ -20,6 +20,7 @@
     "format:js": "prettier-standard './**/*.js' && eslint --fix './**/*.js'",
     "lint:hbs": "ember-template-lint .",
     "lint:js": "eslint .",
+    "release": "standard-version",
     "start": "ember serve",
     "test": "ember test",
     "test:all": "ember try:each"
