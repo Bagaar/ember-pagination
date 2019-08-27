@@ -2,7 +2,7 @@
 
 ## Installation
 
-* `git clone <repository-url>`
+* `git clone git@github.com:Bagaar/ember-pagination.git`
 * `cd ember-pagination`
 * `yarn install`
 
