@@ -7,7 +7,7 @@ module.exports = {
     Chrome: {
       ci: [
         // --no-sandbox is needed when running Chrome inside a container
-        process.env.GITLAB_CI || process.env.TRAVIS ? '--no-sandbox' : null,
+        process.env.TRAVIS ? '--no-sandbox' : null,
 
         '--disable-gpu',
         '--headless',
