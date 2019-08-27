@@ -1,5 +1,5 @@
 {
-  "name": "bgr-ember-pagination",
+  "name": "@bagaar/ember-pagination",
   "version": "0.5.1",
   "description": "Pagination component",
   "keywords": [

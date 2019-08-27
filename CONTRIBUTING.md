@@ -3,7 +3,7 @@
 ## Installation
 
 * `git clone <repository-url>`
-* `cd bgr-ember-pagination`
+* `cd ember-pagination`
 * `yarn install`
 
 ## Linting

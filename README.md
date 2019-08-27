@@ -1,9 +1,8 @@
 # Bagaar Ember Pagination
 
-[![pipeline status](https://git.bagaar.be/shelf/bgr-ember-pagination/badges/develop/pipeline.svg)](https://git.bagaar.be/shelf/bgr-ember-pagination/commits/develop)
 Bagaar logo goes here.
 
-**bgr-ember-pagination is built and maintained by [Bagaar](http://bagaar.be).**
+**@bagaar/ember-pagination is built and maintained by [Bagaar](http://bagaar.be).**
 
 Pagination component with out of the box support for JSON API.
 
@@ -16,7 +15,7 @@ Pagination component with out of the box support for JSON API.
 ## Installation
 
 ```shell
-ember install bgr-ember-pagination
+ember install @bagaar/ember-pagination
 ```
 
 ## Contributing

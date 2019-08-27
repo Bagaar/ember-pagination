@@ -1,4 +1,4 @@
-import generateConfig from 'bgr-ember-pagination/utils/generate-config'
+import generateConfig from '@bagaar/ember-pagination/utils/generate-config'
 import { module, test } from 'qunit'
 
 module('Unit | Utility | generateConfig', function () {
