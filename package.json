@@ -24,6 +24,7 @@
     "lint:js": "eslint . --cache",
     "release": "standard-version",
     "lint:js:fix": "eslint . --fix",
+    "prepare": "husky install",
     "start": "ember serve",
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test",
@@ -34,6 +35,8 @@
     "ember-cli-htmlbars": "^6.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.4.2",
     "@embroider/test-setup": "^0.47.2",
@@ -65,7 +68,6 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-qunit": "^7.1.0",
     "husky": "^7.0.4",
-    "lint-staged": "^12.1.2",
     "loader.js": "^4.7.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.3.2",
@@ -82,16 +84,5 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
