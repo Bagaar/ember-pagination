@@ -4,7 +4,6 @@ import Component from '@ember/component';
 import { assert } from '@ember/debug';
 import { computed } from '@ember/object';
 import { alias } from '@ember/object/computed';
-import layout from '../templates/components/pagination-data';
 
 const DISABLED = null;
 const FIRST_PAGE = 1;
@@ -24,7 +23,6 @@ export default Component.extend({
    * State
    */
 
-  layout,
   tagName: '',
 
   /**
