@@ -71,7 +71,7 @@
     "prettier": "^2.3.2",
     "qunit": "^2.16.0",
     "qunit-dom": "^1.6.0",
-    "standard-version": "^7.0.0"
+    "standard-version": "^8.0.1"
   },
   "engines": {
     "node": "12.* || 14.* || >= 16"
