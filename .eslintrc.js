@@ -5,7 +5,7 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: ['ember'],
-  extends: ['standard', 'plugin:ember/recommended'],
+  extends: ['plugin:ember/recommended'],
   env: {
     browser: true
   },
