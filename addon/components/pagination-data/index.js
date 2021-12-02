@@ -33,7 +33,7 @@ export default Component.extend({
 
   _currentPage: computed('currentPage', 'lastPage', function () {
     assert(
-      `@currentPage should be a value between ${FIRST_PAGE} and ${this.lastPage}`,
+      `@currentPage should be a value between ${FIRST_PAGE} and ${this.lastPage}. You provided \`${this.currentPage}\`.`,
       this.currentPage >= FIRST_PAGE && this.currentPage <= this.lastPage
     );
 
@@ -225,23 +225,23 @@ export default Component.extend({
     const pageMargins = this.pageMargins;
 
     assert(
-      '@currentPage is required and should be a number',
+      `@currentPage is required and should be a number. You provided \`${this.currentPage}\`.`,
       isNumber(this.currentPage)
     );
     assert(
-      '@totalItems is required and should be a number',
+      `@totalItems is required and should be a number. You provided \`${this.totalItems}\`.`,
       isNumber(this.totalItems)
     );
     assert(
-      '@itemsPerPage is required and should be a number',
+      `@itemsPerPage is required and should be a number. You provided \`${itemsPerPage}\`.`,
       !itemsPerPage || isNumber(itemsPerPage)
     );
     assert(
-      '@pageRange should be an uneven number to make sure that the active page is always center aligned',
+      `@pageRange should be an uneven number to make sure that the active page is always center aligned. You provided \`${pageRange}\`.`,
       !pageRange || (isNumber(pageRange) && pageRange % 2 !== 0)
     );
     assert(
-      '@pageMargins should be a number higher than 0',
+      `@pageMargins should be a number higher than 0. You provided \`${pageMargins}\`.`,
       !pageRange || (isNumber(pageMargins) && pageMargins > 0)
     );
   },
