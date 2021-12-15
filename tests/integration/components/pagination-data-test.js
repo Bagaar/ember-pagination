@@ -327,7 +327,7 @@ module('Integration | Component | pagination-data', function (hooks) {
 
     this.setProperties({
       currentPage: 5,
-      pageRange: 10,
+      pageRange: 9,
     });
 
     assert.dom(this.element).hasText('1 2 3 4 5 6 7 8 9 10');
