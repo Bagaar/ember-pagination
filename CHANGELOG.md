@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/Bagaar/ember-pagination/compare/v0.4.0...v0.4.1) (2022-08-30)
+
+
+### Features
+
+* provide `firstActiveItem` and `lastActiveItem` properties ([c1ee3a2](https://github.com/Bagaar/ember-pagination/commit/c1ee3a23433c8397865264445d0663fa86321d20))
+
 ## [0.4.0](https://github.com/Bagaar/ember-pagination/compare/v0.3.0...v0.4.0) (2022-06-23)
 
 
