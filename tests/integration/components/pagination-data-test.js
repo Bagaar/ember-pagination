@@ -196,6 +196,92 @@ module('Integration | Component | pagination-data', function (hooks) {
     assert.dom(this.element).hasText('true');
   });
 
+  test('it yields the first item on the current page as `firstActiveItem`', async function (assert) {
+    this.currentPage = 1;
+    this.firstActiveItem = 1;
+    this.totalItems = 5;
+
+    await render(hbs`
+      <PaginationData
+        @currentPage={{this.currentPage}}
+        @itemsPerPage={{10}}
+        @totalItems={{this.totalItems}}
+        as |data|
+      >
+        {{eq data.firstActiveItem this.firstActiveItem}}
+      </PaginationData>
+    `);
+
+    assert.dom(this.element).hasText('true');
+
+    this.setProperties({
+      currentPage: 2,
+      firstActiveItem: 11,
+      totalItems: 40,
+    });
+
+    assert.dom(this.element).hasText('true');
+
+    this.setProperties({
+      currentPage: 6,
+      firstActiveItem: 51,
+      totalItems: 53,
+    });
+
+    assert.dom(this.element).hasText('true');
+
+    this.setProperties({
+      currentPage: 1,
+      firstActiveItem: 0,
+      totalItems: 0,
+    });
+
+    assert.dom(this.element).hasText('true');
+  });
+
+  test('it yields the last item on the current page as `lastActiveItem`', async function (assert) {
+    this.currentPage = 1;
+    this.lastActiveItem = 5;
+    this.totalItems = 5;
+
+    await render(hbs`
+      <PaginationData
+        @currentPage={{this.currentPage}}
+        @itemsPerPage={{10}}
+        @totalItems={{this.totalItems}}
+        as |data|
+      >
+        {{eq data.lastActiveItem this.lastActiveItem}}
+      </PaginationData>
+    `);
+
+    assert.dom(this.element).hasText('true');
+
+    this.setProperties({
+      currentPage: 2,
+      lastActiveItem: 20,
+      totalItems: 40,
+    });
+
+    assert.dom(this.element).hasText('true');
+
+    this.setProperties({
+      currentPage: 6,
+      lastActiveItem: 53,
+      totalItems: 53,
+    });
+
+    assert.dom(this.element).hasText('true');
+
+    this.setProperties({
+      currentPage: 1,
+      lastActiveItem: 0,
+      totalItems: 0,
+    });
+
+    assert.dom(this.element).hasText('true');
+  });
+
   test('it yields an array of all pages as `allPages`', async function (assert) {
     await render(hbs`
       <PaginationData

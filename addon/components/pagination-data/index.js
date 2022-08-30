@@ -100,12 +100,28 @@ export default class PaginationDataComponent extends Component {
     return range(this.pageRangeUpperLimit + 1, this.totalPages);
   }
 
+  get firstActiveItem() {
+    if (this.totalItems > 0) {
+      return this._currentPage * this.itemsPerPage - this.itemsPerPage + 1;
+    }
+
+    return 0;
+  }
+
   get isFirstPage() {
     return this._currentPage === FIRST_PAGE;
   }
 
   get isLastPage() {
     return this._currentPage === this.lastPage;
+  }
+
+  get lastActiveItem() {
+    if (this.totalItems > 0) {
+      return this.firstActiveItem + this.activeItems - 1;
+    }
+
+    return 0;
   }
 
   get lastPage() {
