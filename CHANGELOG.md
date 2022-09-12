@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.2](https://github.com/Bagaar/ember-pagination/compare/v0.4.1...v0.4.2) (2022-09-12)
+
+
+### Features
+
+* add `pageMargins`, `pageRange` and `totalItems` to yielded data object ([16d3709](https://github.com/Bagaar/ember-pagination/commit/16d3709a10472e31a74c7708641afa2db923c05e))
+
 ### [0.4.1](https://github.com/Bagaar/ember-pagination/compare/v0.4.0...v0.4.1) (2022-08-30)
 
 
