@@ -54,6 +54,9 @@ ember install @bagaar/ember-pagination
   {{! An array including all end-margin page numbers. }}
   {{data.endMarginPages}} {{! [8, 9] }}
   
+  {{! The first item on the current page. }}
+  {{data.firstActiveItem}} {{! 41 }}
+  
   {{! Boolean indicating whether the first page is active. }}
   {{data.isFirstPage}} {{! false }}
   
@@ -63,11 +66,20 @@ ember install @bagaar/ember-pagination
   {{! The amount of items displayed per page. }}
   {{data.itemsPerPage}} {{! 10 }}
   
+  {{! The last item on the current page. }}
+  {{data.lastActiveItem}} {{! 50 }}
+  
   {{! The last page number. }}
   {{data.lastPage}} {{! 9 }}
   
   {{! The next page number. }}
   {{data.nextPage}} {{! 6 }}
+  
+  {{! The provided page margins. }}
+  {{data.pageMargins}} {{! 2 }}
+  
+  {{! The provided page range. }}
+  {{data.pageRange}} {{! 3 }}
   
   {{! An array including all page-range page numbers. }}
   {{data.pageRangePages}} {{! [4, 5, 6] }}
@@ -83,6 +95,9 @@ ember install @bagaar/ember-pagination
   
   {{! An array including all start-margin page numbers. }}
   {{data.startMarginPages}} {{! [1, 2] }}
+  
+  {{! The total amount of items. }}
+  {{data.totalItems}} {{! 90 }}
   
   {{! The total amount of pages. }}
   {{data.totalPages}} {{! 9 }}

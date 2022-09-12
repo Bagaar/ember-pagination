@@ -639,4 +639,57 @@ module('Integration | Component | pagination-data', function (hooks) {
 
     assert.dom(this.element).hasText('true');
   });
+
+  test('`pageMargins` is included in the yielded data object', async function (assert) {
+    this.pageMargins = 2;
+
+    await render(hbs`
+      <PaginationData
+        @currentPage={{5}}
+        @itemsPerPage={{10}}
+        @pageMargins={{this.pageMargins}}
+        @totalItems={{90}}
+        as |data|
+      >
+        {{eq data.pageMargins this.pageMargins}}
+      </PaginationData>
+    `);
+
+    assert.dom(this.element).hasText('true');
+  });
+
+  test('`pageRange` is included in the yielded data object', async function (assert) {
+    this.pageRange = 3;
+
+    await render(hbs`
+      <PaginationData
+        @currentPage={{5}}
+        @itemsPerPage={{10}}
+        @pageRange={{this.pageRange}}
+        @totalItems={{90}}
+        as |data|
+      >
+        {{eq data.pageRange this.pageRange}}
+      </PaginationData>
+    `);
+
+    assert.dom(this.element).hasText('true');
+  });
+
+  test('`totalItems` is included in the yielded data object', async function (assert) {
+    this.totalItems = 90;
+
+    await render(hbs`
+      <PaginationData
+        @currentPage={{5}}
+        @itemsPerPage={{10}}
+        @totalItems={{this.totalItems}}
+        as |data|
+      >
+        {{eq data.totalItems this.totalItems}}
+      </PaginationData>
+    `);
+
+    assert.dom(this.element).hasText('true');
+  });
 });
