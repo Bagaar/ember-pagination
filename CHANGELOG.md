@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.1](https://github.com/Bagaar/ember-pagination/compare/v0.5.0...v0.5.1) (2023-07-06)
+
+
+### Features
+
+* add support for Ember v5.0 ([a0cffd5](https://github.com/Bagaar/ember-pagination/commit/a0cffd5d81a3a7e1f7d4b0fea6ee87fece68bf1d))
+
 ## [0.5.0](https://github.com/Bagaar/ember-pagination/compare/v0.4.2...v0.5.0) (2023-07-06)
 
 
