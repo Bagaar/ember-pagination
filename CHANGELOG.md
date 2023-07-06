@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/Bagaar/ember-pagination/compare/v0.4.2...v0.5.0) (2023-07-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop support for Ember versions below v4.4
+* drop support for Node v14
+
+* drop support for Ember versions below v4.4 ([29a127f](https://github.com/Bagaar/ember-pagination/commit/29a127f4ff034d4a507eca13d4a76f7d8d94f28c))
+* drop support for Node v14 ([8e53abf](https://github.com/Bagaar/ember-pagination/commit/8e53abf484557ce4fc7b0368f524e0590eef86ee))
+
 ### [0.4.2](https://github.com/Bagaar/ember-pagination/compare/v0.4.1...v0.4.2) (2022-09-12)
 
 
