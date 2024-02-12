@@ -11,13 +11,21 @@
     <dd>{{data.activeItems}}</dd>
 
     <dt>allPages</dt>
-    <dd>{{data.allPages}}</dd>
+    <dd>
+      {{#each data.allPages as |page|}}
+        {{page}}
+      {{/each}}
+    </dd>
 
     <dt>currentPage</dt>
     <dd>{{data.currentPage}}</dd>
 
     <dt>endMarginPages</dt>
-    <dd>{{data.endMarginPages}}</dd>
+    <dd>
+      {{#each data.endMarginPages as |page|}}
+        {{page}}
+      {{/each}}
+    </dd>
 
     <dt>firstActiveItem</dt>
     <dd>{{data.firstActiveItem}}</dd>
@@ -47,7 +55,11 @@
     <dd>{{data.pageRange}}</dd>
 
     <dt>pageRangePages</dt>
-    <dd>{{data.pageRangePages}}</dd>
+    <dd>
+      {{#each data.pageRangePages as |page|}}
+        {{page}}
+      {{/each}}
+    </dd>
 
     <dt>previousPage</dt>
     <dd>{{data.previousPage}}</dd>
@@ -59,7 +71,11 @@
     <dd>{{data.shouldShowUpperBreak}}</dd>
 
     <dt>startMarginPages</dt>
-    <dd>{{data.startMarginPages}}</dd>
+    <dd>
+      {{#each data.startMarginPages as |page|}}
+        {{page}}
+      {{/each}}
+    </dd>
 
     <dt>totalItems</dt>
     <dd>{{data.totalItems}}</dd>

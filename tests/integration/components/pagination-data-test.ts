@@ -5,13 +5,13 @@ import { module, test } from 'qunit';
 
 interface LocalTestContext extends TestContext {
   activeItems?: number;
-  currentPage?: number;
+  currentPage: number;
   firstActiveItem?: number;
-  itemsPerPage?: number;
+  itemsPerPage: number;
   lastActiveItem?: number;
   pageMargins?: number;
   pageRange?: number;
-  totalItems?: number;
+  totalItems: number;
   totalPages?: number;
 }
 
@@ -19,7 +19,7 @@ module('Integration | Component | pagination-data', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it determines the correct `previousPage` value', async function (this: LocalTestContext, assert) {
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{4}}
         @itemsPerPage={{10}}
@@ -34,7 +34,7 @@ module('Integration | Component | pagination-data', function (hooks) {
   });
 
   test('`previousPage` is `null` when `@currentPage` is the first page', async function (this: LocalTestContext, assert) {
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{1}}
         @itemsPerPage={{10}}
@@ -49,7 +49,7 @@ module('Integration | Component | pagination-data', function (hooks) {
   });
 
   test('it determines the correct `nextPage` value', async function (this: LocalTestContext, assert) {
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{4}}
         @itemsPerPage={{10}}
@@ -68,7 +68,7 @@ module('Integration | Component | pagination-data', function (hooks) {
     this.itemsPerPage = 10;
     this.totalItems = 10;
 
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{this.currentPage}}
         @itemsPerPage={{this.itemsPerPage}}
@@ -93,7 +93,7 @@ module('Integration | Component | pagination-data', function (hooks) {
   test('it yields an `isFirstPage` value', async function (this: LocalTestContext, assert) {
     this.currentPage = 1;
 
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{this.currentPage}}
         @itemsPerPage={{10}}
@@ -114,7 +114,7 @@ module('Integration | Component | pagination-data', function (hooks) {
   test('it yields an `isLastPage` value', async function (this: LocalTestContext, assert) {
     this.currentPage = 2;
 
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{this.currentPage}}
         @itemsPerPage={{10}}
@@ -137,7 +137,7 @@ module('Integration | Component | pagination-data', function (hooks) {
     this.totalItems = 60;
     this.totalPages = 6;
 
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{1}}
         @itemsPerPage={{this.itemsPerPage}}
@@ -170,7 +170,7 @@ module('Integration | Component | pagination-data', function (hooks) {
     this.currentPage = 1;
     this.totalItems = 5;
 
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{this.currentPage}}
         @itemsPerPage={{10}}
@@ -213,7 +213,7 @@ module('Integration | Component | pagination-data', function (hooks) {
     this.firstActiveItem = 1;
     this.totalItems = 5;
 
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{this.currentPage}}
         @itemsPerPage={{10}}
@@ -256,7 +256,7 @@ module('Integration | Component | pagination-data', function (hooks) {
     this.lastActiveItem = 5;
     this.totalItems = 5;
 
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{this.currentPage}}
         @itemsPerPage={{10}}
@@ -295,7 +295,7 @@ module('Integration | Component | pagination-data', function (hooks) {
   });
 
   test('it yields an array of all pages as `allPages`', async function (this: LocalTestContext, assert) {
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{1}}
         @itemsPerPage={{10}}
@@ -315,7 +315,7 @@ module('Integration | Component | pagination-data', function (hooks) {
     this.pageMargins = 1;
     this.pageRange = undefined;
 
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{1}}
         @itemsPerPage={{10}}
@@ -345,7 +345,7 @@ module('Integration | Component | pagination-data', function (hooks) {
     this.pageMargins = 1;
     this.pageRange = undefined;
 
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{1}}
         @itemsPerPage={{10}}
@@ -376,7 +376,7 @@ module('Integration | Component | pagination-data', function (hooks) {
     this.pageRange = undefined;
     this.totalItems = 100;
 
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{this.currentPage}}
         @itemsPerPage={{10}}
@@ -443,7 +443,7 @@ module('Integration | Component | pagination-data', function (hooks) {
     this.pageMargins = 1;
     this.totalItems = 50;
 
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{this.currentPage}}
         @itemsPerPage={{10}}
@@ -500,7 +500,7 @@ module('Integration | Component | pagination-data', function (hooks) {
     this.currentPage = 1;
     this.pageRange = 3;
 
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{this.currentPage}}
         @itemsPerPage={{10}}
@@ -532,7 +532,7 @@ module('Integration | Component | pagination-data', function (hooks) {
   });
 
   test('`shouldShowLowerBreak` always returns `false` if there are not enough pages', async function (this: LocalTestContext, assert) {
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{1}}
         @itemsPerPage={{10}}
@@ -551,7 +551,7 @@ module('Integration | Component | pagination-data', function (hooks) {
     this.currentPage = 1;
     this.pageRange = undefined;
 
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{this.currentPage}}
         @itemsPerPage={{10}}
@@ -578,7 +578,7 @@ module('Integration | Component | pagination-data', function (hooks) {
     this.currentPage = 10;
     this.pageRange = 3;
 
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{this.currentPage}}
         @itemsPerPage={{10}}
@@ -610,7 +610,7 @@ module('Integration | Component | pagination-data', function (hooks) {
   });
 
   test('`shouldShowUpperBreak` always returns `false` if there are not enough pages', async function (this: LocalTestContext, assert) {
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{1}}
         @itemsPerPage={{10}}
@@ -629,7 +629,7 @@ module('Integration | Component | pagination-data', function (hooks) {
     this.currentPage = 10;
     this.pageRange = undefined;
 
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{this.currentPage}}
         @itemsPerPage={{10}}
@@ -655,7 +655,7 @@ module('Integration | Component | pagination-data', function (hooks) {
   test('`pageMargins` is included in the yielded data object', async function (this: LocalTestContext, assert) {
     this.pageMargins = 2;
 
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{5}}
         @itemsPerPage={{10}}
@@ -673,7 +673,7 @@ module('Integration | Component | pagination-data', function (hooks) {
   test('`pageRange` is included in the yielded data object', async function (this: LocalTestContext, assert) {
     this.pageRange = 3;
 
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{5}}
         @itemsPerPage={{10}}
@@ -691,7 +691,7 @@ module('Integration | Component | pagination-data', function (hooks) {
   test('`totalItems` is included in the yielded data object', async function (this: LocalTestContext, assert) {
     this.totalItems = 90;
 
-    await render(hbs`
+    await render<LocalTestContext>(hbs`
       <PaginationData
         @currentPage={{5}}
         @itemsPerPage={{10}}

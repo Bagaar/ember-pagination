@@ -5,8 +5,8 @@ interface PaginationDataSignature {
   Args: {
     currentPage: number;
     itemsPerPage: number;
-    pageMargins: number;
-    pageRange: number;
+    pageMargins?: number;
+    pageRange?: number;
     totalItems: number;
   };
   Blocks: {
@@ -15,21 +15,21 @@ interface PaginationDataSignature {
         activeItems: number;
         allPages: number[];
         currentPage: number;
-        endMarginPages: number[];
+        endMarginPages: number[] | null;
         firstActiveItem: number;
         isFirstPage: boolean;
         isLastPage: boolean;
         itemsPerPage: number;
         lastActiveItem: number;
         lastPage: number;
-        nextPage: number;
+        nextPage: number | null;
         pageMargins: number;
-        pageRange: number;
-        pageRangePages: number[];
-        previousPage: number;
+        pageRange: number | null;
+        pageRangePages: number[] | null;
+        previousPage: number | null;
         shouldShowLowerBreak: boolean;
         shouldShowUpperBreak: boolean;
-        startMarginPages: number[];
+        startMarginPages: number[] | null;
         totalItems: number;
         totalPages: number;
       },
@@ -48,7 +48,7 @@ export default class PaginationData extends Component<PaginationDataSignature> {
   get currentPage() {
     assert(
       `@currentPage is required and must be a number. You provided \`${this.args.currentPage}\`.`,
-      isNumber(this.args.currentPage),
+      typeof this.args.currentPage === 'number',
     );
 
     assert(
@@ -63,14 +63,14 @@ export default class PaginationData extends Component<PaginationDataSignature> {
   get itemsPerPage() {
     assert(
       `@itemsPerPage is required and must be a number. You provided \`${this.args.itemsPerPage}\`.`,
-      isNumber(this.args.itemsPerPage),
+      typeof this.args.itemsPerPage === 'number',
     );
 
     return this.args.itemsPerPage;
   }
 
   get pageMargins() {
-    if (isNumber(this.args.pageMargins) === false) {
+    if (typeof this.args.pageMargins !== 'number') {
       return 1;
     }
 
@@ -83,7 +83,7 @@ export default class PaginationData extends Component<PaginationDataSignature> {
   }
 
   get pageRange() {
-    if (isNumber(this.args.pageRange) === false) {
+    if (typeof this.args.pageRange !== 'number') {
       return null;
     }
 
@@ -98,7 +98,7 @@ export default class PaginationData extends Component<PaginationDataSignature> {
   get totalItems() {
     assert(
       `@totalItems is required and must be a number. You provided \`${this.args.totalItems}\`.`,
-      isNumber(this.args.totalItems),
+      typeof this.args.totalItems === 'number',
     );
 
     return this.args.totalItems;
@@ -221,7 +221,8 @@ export default class PaginationData extends Component<PaginationDataSignature> {
     }
 
     return (
-      this.pageRangePages?.length &&
+      Array.isArray(this.pageRangePages) &&
+      this.pageRangePages.length > 0 &&
       this.pageRangePages[0] !== this.pageRangeLowerLimit
     );
   }
@@ -236,7 +237,8 @@ export default class PaginationData extends Component<PaginationDataSignature> {
     }
 
     return (
-      this.pageRangePages?.length &&
+      Array.isArray(this.pageRangePages) &&
+      this.pageRangePages.length > 0 &&
       this.pageRangePages[this.pageRangePages.length - 1] !==
         this.pageRangeUpperLimit
     );
@@ -263,10 +265,6 @@ export default class PaginationData extends Component<PaginationDataSignature> {
 
 function clamp(number: number, min: number, max: number) {
   return Math.min(Math.max(number, min), max);
-}
-
-function isNumber(value: number) {
-  return typeof value === 'number' && isNaN(value) === false;
 }
 
 function range(start: number, end: number) {

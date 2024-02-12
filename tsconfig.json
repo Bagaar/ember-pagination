@@ -14,5 +14,8 @@
       "@bagaar/ember-pagination/test-support/*": ["addon-test-support/*"],
       "*": ["types/*"]
     }
+  },
+  "glint": {
+    "environment": "ember-loose"
   }
 }
