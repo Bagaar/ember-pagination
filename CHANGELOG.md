@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/Bagaar/ember-pagination/compare/v0.5.1...v0.6.0) (2024-02-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* migrate to TypeScript
+* drop support for Ember v4.4
+* drop support for Node v16
+
+### Features
+
+* add Glint support ([2873a62](https://github.com/Bagaar/ember-pagination/commit/2873a62318dba543044cf114a6e864d21758d686))
+* migrate to TypeScript ([e3dad87](https://github.com/Bagaar/ember-pagination/commit/e3dad8730f812091b4d23da1ffe100ce0c35ca12))
+
+
+* drop support for Ember v4.4 ([19dc64d](https://github.com/Bagaar/ember-pagination/commit/19dc64d8b20912dec42bffeb469d16726b54e895))
+* drop support for Node v16 ([ba26274](https://github.com/Bagaar/ember-pagination/commit/ba262744b14103b879f249b25b60bdd4d1491eb3))
+
 ### [0.5.1](https://github.com/Bagaar/ember-pagination/compare/v0.5.0...v0.5.1) (2023-07-06)
 
 
