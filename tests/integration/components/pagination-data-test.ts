@@ -1,12 +1,24 @@
-import { render } from '@ember/test-helpers';
+import { render, type TestContext } from '@ember/test-helpers';
 import { setupRenderingTest } from 'dummy/tests/helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 
+interface LocalTestContext extends TestContext {
+  activeItems?: number;
+  currentPage?: number;
+  firstActiveItem?: number;
+  itemsPerPage?: number;
+  lastActiveItem?: number;
+  pageMargins?: number;
+  pageRange?: number;
+  totalItems?: number;
+  totalPages?: number;
+}
+
 module('Integration | Component | pagination-data', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it determines the correct `previousPage` value', async function (assert) {
+  test('it determines the correct `previousPage` value', async function (this: LocalTestContext, assert) {
     await render(hbs`
       <PaginationData
         @currentPage={{4}}
@@ -18,10 +30,10 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
   });
 
-  test('`previousPage` is `null` when `@currentPage` is the first page', async function (assert) {
+  test('`previousPage` is `null` when `@currentPage` is the first page', async function (this: LocalTestContext, assert) {
     await render(hbs`
       <PaginationData
         @currentPage={{1}}
@@ -33,10 +45,10 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
   });
 
-  test('it determines the correct `nextPage` value', async function (assert) {
+  test('it determines the correct `nextPage` value', async function (this: LocalTestContext, assert) {
     await render(hbs`
       <PaginationData
         @currentPage={{4}}
@@ -48,10 +60,10 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
   });
 
-  test('`nextPage` is `null` when `@currentPage` is the last page', async function (assert) {
+  test('`nextPage` is `null` when `@currentPage` is the last page', async function (this: LocalTestContext, assert) {
     this.currentPage = 1;
     this.itemsPerPage = 10;
     this.totalItems = 10;
@@ -67,7 +79,7 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
 
     this.setProperties({
       currentPage: 5,
@@ -75,10 +87,10 @@ module('Integration | Component | pagination-data', function (hooks) {
       totalItems: 50,
     });
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
   });
 
-  test('it yields an `isFirstPage` value', async function (assert) {
+  test('it yields an `isFirstPage` value', async function (this: LocalTestContext, assert) {
     this.currentPage = 1;
 
     await render(hbs`
@@ -92,14 +104,14 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
 
     this.set('currentPage', 2);
 
-    assert.dom(this.element).hasText('false');
+    assert.dom().hasText('false');
   });
 
-  test('it yields an `isLastPage` value', async function (assert) {
+  test('it yields an `isLastPage` value', async function (this: LocalTestContext, assert) {
     this.currentPage = 2;
 
     await render(hbs`
@@ -113,14 +125,14 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
 
     this.set('currentPage', 1);
 
-    assert.dom(this.element).hasText('false');
+    assert.dom().hasText('false');
   });
 
-  test('it yields the total amount of pages as `totalPages`', async function (assert) {
+  test('it yields the total amount of pages as `totalPages`', async function (this: LocalTestContext, assert) {
     this.itemsPerPage = 10;
     this.totalItems = 60;
     this.totalPages = 6;
@@ -136,24 +148,24 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
 
     this.setProperties({
       totalItems: 10,
       totalPages: 1,
     });
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
 
     this.setProperties({
       itemsPerPage: 2,
       totalPages: 5,
     });
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
   });
 
-  test('it yields the amount of items on the current page as `activeItems`', async function (assert) {
+  test('it yields the amount of items on the current page as `activeItems`', async function (this: LocalTestContext, assert) {
     this.activeItems = 5;
     this.currentPage = 1;
     this.totalItems = 5;
@@ -169,7 +181,7 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
 
     this.setProperties({
       activeItems: 10,
@@ -177,7 +189,7 @@ module('Integration | Component | pagination-data', function (hooks) {
       totalItems: 40,
     });
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
 
     this.setProperties({
       activeItems: 3,
@@ -185,7 +197,7 @@ module('Integration | Component | pagination-data', function (hooks) {
       totalItems: 53,
     });
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
 
     this.setProperties({
       activeItems: 0,
@@ -193,10 +205,10 @@ module('Integration | Component | pagination-data', function (hooks) {
       totalItems: 0,
     });
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
   });
 
-  test('it yields the first item on the current page as `firstActiveItem`', async function (assert) {
+  test('it yields the first item on the current page as `firstActiveItem`', async function (this: LocalTestContext, assert) {
     this.currentPage = 1;
     this.firstActiveItem = 1;
     this.totalItems = 5;
@@ -212,7 +224,7 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
 
     this.setProperties({
       currentPage: 2,
@@ -220,7 +232,7 @@ module('Integration | Component | pagination-data', function (hooks) {
       totalItems: 40,
     });
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
 
     this.setProperties({
       currentPage: 6,
@@ -228,7 +240,7 @@ module('Integration | Component | pagination-data', function (hooks) {
       totalItems: 53,
     });
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
 
     this.setProperties({
       currentPage: 1,
@@ -236,10 +248,10 @@ module('Integration | Component | pagination-data', function (hooks) {
       totalItems: 0,
     });
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
   });
 
-  test('it yields the last item on the current page as `lastActiveItem`', async function (assert) {
+  test('it yields the last item on the current page as `lastActiveItem`', async function (this: LocalTestContext, assert) {
     this.currentPage = 1;
     this.lastActiveItem = 5;
     this.totalItems = 5;
@@ -255,7 +267,7 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
 
     this.setProperties({
       currentPage: 2,
@@ -263,7 +275,7 @@ module('Integration | Component | pagination-data', function (hooks) {
       totalItems: 40,
     });
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
 
     this.setProperties({
       currentPage: 6,
@@ -271,7 +283,7 @@ module('Integration | Component | pagination-data', function (hooks) {
       totalItems: 53,
     });
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
 
     this.setProperties({
       currentPage: 1,
@@ -279,10 +291,10 @@ module('Integration | Component | pagination-data', function (hooks) {
       totalItems: 0,
     });
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
   });
 
-  test('it yields an array of all pages as `allPages`', async function (assert) {
+  test('it yields an array of all pages as `allPages`', async function (this: LocalTestContext, assert) {
     await render(hbs`
       <PaginationData
         @currentPage={{1}}
@@ -296,12 +308,12 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('1 2 3');
+    assert.dom().hasText('1 2 3');
   });
 
-  test('it yields an array of pages before the break as `startMarginPages` if `@pageRange` is set', async function (assert) {
+  test('it yields an array of pages before the break as `startMarginPages` if `@pageRange` is set', async function (this: LocalTestContext, assert) {
     this.pageMargins = 1;
-    this.pageRange = null;
+    this.pageRange = undefined;
 
     await render(hbs`
       <PaginationData
@@ -318,20 +330,20 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('');
+    assert.dom().hasText('');
 
     this.set('pageRange', 3);
 
-    assert.dom(this.element).hasText('1');
+    assert.dom().hasText('1');
 
     this.set('pageMargins', 2);
 
-    assert.dom(this.element).hasText('1 2');
+    assert.dom().hasText('1 2');
   });
 
-  test('it yields an array of pages after the break as `endMarginPages` if `@pageRange` is set', async function (assert) {
+  test('it yields an array of pages after the break as `endMarginPages` if `@pageRange` is set', async function (this: LocalTestContext, assert) {
     this.pageMargins = 1;
-    this.pageRange = null;
+    this.pageRange = undefined;
 
     await render(hbs`
       <PaginationData
@@ -348,20 +360,20 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('');
+    assert.dom().hasText('');
 
     this.set('pageRange', 3);
 
-    assert.dom(this.element).hasText('10');
+    assert.dom().hasText('10');
 
     this.set('pageMargins', 2);
 
-    assert.dom(this.element).hasText('9 10');
+    assert.dom().hasText('9 10');
   });
 
-  test('`pageRangePages` contains an array of the pages between the breaks if `@pageRange` is set', async function (assert) {
+  test('`pageRangePages` contains an array of the pages between the breaks if `@pageRange` is set', async function (this: LocalTestContext, assert) {
     this.currentPage = 1;
-    this.pageRange = null;
+    this.pageRange = undefined;
     this.totalItems = 100;
 
     await render(hbs`
@@ -378,55 +390,55 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('');
+    assert.dom().hasText('');
 
     this.set('pageRange', 3);
 
-    assert.dom(this.element).hasText('2 3 4');
+    assert.dom().hasText('2 3 4');
 
     this.set('currentPage', 3);
 
-    assert.dom(this.element).hasText('2 3 4');
+    assert.dom().hasText('2 3 4');
 
     this.set('currentPage', 4);
 
-    assert.dom(this.element).hasText('3 4 5');
+    assert.dom().hasText('3 4 5');
 
     this.set('currentPage', 7);
 
-    assert.dom(this.element).hasText('6 7 8');
+    assert.dom().hasText('6 7 8');
 
     this.set('currentPage', 8);
 
-    assert.dom(this.element).hasText('7 8 9');
+    assert.dom().hasText('7 8 9');
 
     this.set('currentPage', 10);
 
-    assert.dom(this.element).hasText('7 8 9');
+    assert.dom().hasText('7 8 9');
 
     this.setProperties({
       currentPage: 5,
       pageRange: 5,
     });
 
-    assert.dom(this.element).hasText('3 4 5 6 7');
+    assert.dom().hasText('3 4 5 6 7');
 
     this.setProperties({
       currentPage: 5,
       pageRange: 9,
     });
 
-    assert.dom(this.element).hasText('1 2 3 4 5 6 7 8 9 10');
+    assert.dom().hasText('1 2 3 4 5 6 7 8 9 10');
 
     this.setProperties({
       currentPage: 1,
       totalItems: 0,
     });
 
-    assert.dom(this.element).hasText('1');
+    assert.dom().hasText('1');
   });
 
-  test('`pageRangePages` contains all pages if the sum of the margin pages and the `@pageRange` is larger than the total amount of pages', async function (assert) {
+  test('`pageRangePages` contains all pages if the sum of the margin pages and the `@pageRange` is larger than the total amount of pages', async function (this: LocalTestContext, assert) {
     this.currentPage = 3;
     this.pageMargins = 1;
     this.totalItems = 50;
@@ -484,7 +496,7 @@ module('Integration | Component | pagination-data', function (hooks) {
     assert.dom('[data-test-end-margin-pages]').hasText('');
   });
 
-  test('`shouldShowLowerBreak` can only be `true` if `@pageRange` is set', async function (assert) {
+  test('`shouldShowLowerBreak` can only be `true` if `@pageRange` is set', async function (this: LocalTestContext, assert) {
     this.currentPage = 1;
     this.pageRange = 3;
 
@@ -500,26 +512,26 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('false');
+    assert.dom().hasText('false');
 
     this.set('currentPage', 3);
 
-    assert.dom(this.element).hasText('false');
+    assert.dom().hasText('false');
 
     this.set('currentPage', 4);
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
 
     this.set('pageRange', 5);
 
-    assert.dom(this.element).hasText('false');
+    assert.dom().hasText('false');
 
     this.set('currentPage', 5);
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
   });
 
-  test('`shouldShowLowerBreak` always returns `false` if there are not enough pages', async function (assert) {
+  test('`shouldShowLowerBreak` always returns `false` if there are not enough pages', async function (this: LocalTestContext, assert) {
     await render(hbs`
       <PaginationData
         @currentPage={{1}}
@@ -532,12 +544,12 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('false');
+    assert.dom().hasText('false');
   });
 
-  test('`shouldShowLowerBreak` always returns `false` if `@pageRange` is not set', async function (assert) {
+  test('`shouldShowLowerBreak` always returns `false` if `@pageRange` is not set', async function (this: LocalTestContext, assert) {
     this.currentPage = 1;
-    this.pageRange = null;
+    this.pageRange = undefined;
 
     await render(hbs`
       <PaginationData
@@ -551,18 +563,18 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('false');
+    assert.dom().hasText('false');
 
     this.set('currentPage', 10);
 
-    assert.dom(this.element).hasText('false');
+    assert.dom().hasText('false');
 
     this.set('pageRange', 3);
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
   });
 
-  test('`shouldShowUpperBreak` can only be `true` if `@pageRange` is set', async function (assert) {
+  test('`shouldShowUpperBreak` can only be `true` if `@pageRange` is set', async function (this: LocalTestContext, assert) {
     this.currentPage = 10;
     this.pageRange = 3;
 
@@ -578,26 +590,26 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('false');
+    assert.dom().hasText('false');
 
     this.set('currentPage', 8);
 
-    assert.dom(this.element).hasText('false');
+    assert.dom().hasText('false');
 
     this.set('currentPage', 7);
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
 
     this.set('pageRange', 5);
 
-    assert.dom(this.element).hasText('false');
+    assert.dom().hasText('false');
 
     this.set('currentPage', 5);
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
   });
 
-  test('`shouldShowUpperBreak` always returns `false` if there are not enough pages', async function (assert) {
+  test('`shouldShowUpperBreak` always returns `false` if there are not enough pages', async function (this: LocalTestContext, assert) {
     await render(hbs`
       <PaginationData
         @currentPage={{1}}
@@ -610,12 +622,12 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('false');
+    assert.dom().hasText('false');
   });
 
-  test('`shouldShowUpperBreak` always returns `false` if `@pageRange` is not set', async function (assert) {
+  test('`shouldShowUpperBreak` always returns `false` if `@pageRange` is not set', async function (this: LocalTestContext, assert) {
     this.currentPage = 10;
-    this.pageRange = null;
+    this.pageRange = undefined;
 
     await render(hbs`
       <PaginationData
@@ -629,18 +641,18 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('false');
+    assert.dom().hasText('false');
 
     this.set('currentPage', 1);
 
-    assert.dom(this.element).hasText('false');
+    assert.dom().hasText('false');
 
     this.set('pageRange', 3);
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
   });
 
-  test('`pageMargins` is included in the yielded data object', async function (assert) {
+  test('`pageMargins` is included in the yielded data object', async function (this: LocalTestContext, assert) {
     this.pageMargins = 2;
 
     await render(hbs`
@@ -655,10 +667,10 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
   });
 
-  test('`pageRange` is included in the yielded data object', async function (assert) {
+  test('`pageRange` is included in the yielded data object', async function (this: LocalTestContext, assert) {
     this.pageRange = 3;
 
     await render(hbs`
@@ -673,10 +685,10 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
   });
 
-  test('`totalItems` is included in the yielded data object', async function (assert) {
+  test('`totalItems` is included in the yielded data object', async function (this: LocalTestContext, assert) {
     this.totalItems = 90;
 
     await render(hbs`
@@ -690,6 +702,6 @@ module('Integration | Component | pagination-data', function (hooks) {
       </PaginationData>
     `);
 
-    assert.dom(this.element).hasText('true');
+    assert.dom().hasText('true');
   });
 });

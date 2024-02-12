@@ -1,10 +1,46 @@
 import { assert } from '@ember/debug';
 import Component from '@glimmer/component';
 
+interface PaginationDataSignature {
+  Args: {
+    currentPage: number;
+    itemsPerPage: number;
+    pageMargins: number;
+    pageRange: number;
+    totalItems: number;
+  };
+  Blocks: {
+    default: [
+      {
+        activeItems: number;
+        allPages: number[];
+        currentPage: number;
+        endMarginPages: number[];
+        firstActiveItem: number;
+        isFirstPage: boolean;
+        isLastPage: boolean;
+        itemsPerPage: number;
+        lastActiveItem: number;
+        lastPage: number;
+        nextPage: number;
+        pageMargins: number;
+        pageRange: number;
+        pageRangePages: number[];
+        previousPage: number;
+        shouldShowLowerBreak: boolean;
+        shouldShowUpperBreak: boolean;
+        startMarginPages: number[];
+        totalItems: number;
+        totalPages: number;
+      },
+    ];
+  };
+}
+
 const DISABLED = null;
 const FIRST_PAGE = 1;
 
-export default class PaginationDataComponent extends Component {
+export default class PaginationData extends Component<PaginationDataSignature> {
   /**
    * Argument getters
    */
@@ -133,7 +169,7 @@ export default class PaginationDataComponent extends Component {
   }
 
   get pageMarginsThreshold() {
-    return this.pageRange + this.pageMargins * 2;
+    return (this.pageRange || 0) + this.pageMargins * 2;
   }
 
   get pageRangeLowerLimit() {
@@ -185,7 +221,7 @@ export default class PaginationDataComponent extends Component {
     }
 
     return (
-      this.pageRangePages.length &&
+      this.pageRangePages?.length &&
       this.pageRangePages[0] !== this.pageRangeLowerLimit
     );
   }
@@ -200,7 +236,7 @@ export default class PaginationDataComponent extends Component {
     }
 
     return (
-      this.pageRangePages.length &&
+      this.pageRangePages?.length &&
       this.pageRangePages[this.pageRangePages.length - 1] !==
         this.pageRangeUpperLimit
     );
@@ -225,14 +261,14 @@ export default class PaginationDataComponent extends Component {
   }
 }
 
-function clamp(number, min, max) {
+function clamp(number: number, min: number, max: number) {
   return Math.min(Math.max(number, min), max);
 }
 
-function isNumber(value) {
+function isNumber(value: number) {
   return typeof value === 'number' && isNaN(value) === false;
 }
 
-function range(start, end) {
+function range(start: number, end: number) {
   return new Array(end - start + 1).fill(undefined).map((_, i) => i + start);
 }
