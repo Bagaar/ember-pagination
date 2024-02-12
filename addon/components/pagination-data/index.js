@@ -12,13 +12,13 @@ export default class PaginationDataComponent extends Component {
   get currentPage() {
     assert(
       `@currentPage is required and must be a number. You provided \`${this.args.currentPage}\`.`,
-      isNumber(this.args.currentPage)
+      isNumber(this.args.currentPage),
     );
 
     assert(
       `@currentPage must be a value between \`${FIRST_PAGE}\` and \`${this.lastPage}\`. You provided \`${this.args.currentPage}\`.`,
       this.args.currentPage >= FIRST_PAGE &&
-        this.args.currentPage <= this.lastPage
+        this.args.currentPage <= this.lastPage,
     );
 
     return this.args.currentPage;
@@ -27,7 +27,7 @@ export default class PaginationDataComponent extends Component {
   get itemsPerPage() {
     assert(
       `@itemsPerPage is required and must be a number. You provided \`${this.args.itemsPerPage}\`.`,
-      isNumber(this.args.itemsPerPage)
+      isNumber(this.args.itemsPerPage),
     );
 
     return this.args.itemsPerPage;
@@ -40,7 +40,7 @@ export default class PaginationDataComponent extends Component {
 
     assert(
       `@pageMargins must be a number higher than \`0\`. You provided \`${this.args.pageMargins}\`.`,
-      this.args.pageMargins > 0
+      this.args.pageMargins > 0,
     );
 
     return this.args.pageMargins;
@@ -53,7 +53,7 @@ export default class PaginationDataComponent extends Component {
 
     assert(
       `@pageRange must be an uneven number to make sure that the active page is always center aligned. You provided \`${this.args.pageRange}\`.`,
-      this.args.pageRange % 2 !== 0
+      this.args.pageRange % 2 !== 0,
     );
 
     return this.args.pageRange;
@@ -62,7 +62,7 @@ export default class PaginationDataComponent extends Component {
   get totalItems() {
     assert(
       `@totalItems is required and must be a number. You provided \`${this.args.totalItems}\`.`,
-      isNumber(this.args.totalItems)
+      isNumber(this.args.totalItems),
     );
 
     return this.args.totalItems;
