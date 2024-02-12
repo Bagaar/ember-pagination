@@ -18,9 +18,9 @@ Easy customisable pagination component for Ember applications.
 
 ## Compatibility
 
-- Ember.js v4.4 or above
-- Ember CLI v4.4 or above
-- Node.js v16 or above
+- Ember.js v4.8 or above
+- Ember CLI v4.8 or above
+- Node.js v18 or above
 
 ## Installation
 

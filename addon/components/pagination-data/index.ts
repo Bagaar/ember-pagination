@@ -1,10 +1,46 @@
 import { assert } from '@ember/debug';
 import Component from '@glimmer/component';
 
+interface PaginationDataSignature {
+  Args: {
+    currentPage: number;
+    itemsPerPage: number;
+    pageMargins?: number;
+    pageRange?: number;
+    totalItems: number;
+  };
+  Blocks: {
+    default: [
+      {
+        activeItems: number;
+        allPages: number[];
+        currentPage: number;
+        endMarginPages: number[] | null;
+        firstActiveItem: number;
+        isFirstPage: boolean;
+        isLastPage: boolean;
+        itemsPerPage: number;
+        lastActiveItem: number;
+        lastPage: number;
+        nextPage: number | null;
+        pageMargins: number;
+        pageRange: number | null;
+        pageRangePages: number[] | null;
+        previousPage: number | null;
+        shouldShowLowerBreak: boolean;
+        shouldShowUpperBreak: boolean;
+        startMarginPages: number[] | null;
+        totalItems: number;
+        totalPages: number;
+      },
+    ];
+  };
+}
+
 const DISABLED = null;
 const FIRST_PAGE = 1;
 
-export default class PaginationDataComponent extends Component {
+export default class PaginationData extends Component<PaginationDataSignature> {
   /**
    * Argument getters
    */
@@ -12,13 +48,13 @@ export default class PaginationDataComponent extends Component {
   get currentPage() {
     assert(
       `@currentPage is required and must be a number. You provided \`${this.args.currentPage}\`.`,
-      isNumber(this.args.currentPage)
+      typeof this.args.currentPage === 'number',
     );
 
     assert(
       `@currentPage must be a value between \`${FIRST_PAGE}\` and \`${this.lastPage}\`. You provided \`${this.args.currentPage}\`.`,
       this.args.currentPage >= FIRST_PAGE &&
-        this.args.currentPage <= this.lastPage
+        this.args.currentPage <= this.lastPage,
     );
 
     return this.args.currentPage;
@@ -27,33 +63,33 @@ export default class PaginationDataComponent extends Component {
   get itemsPerPage() {
     assert(
       `@itemsPerPage is required and must be a number. You provided \`${this.args.itemsPerPage}\`.`,
-      isNumber(this.args.itemsPerPage)
+      typeof this.args.itemsPerPage === 'number',
     );
 
     return this.args.itemsPerPage;
   }
 
   get pageMargins() {
-    if (isNumber(this.args.pageMargins) === false) {
+    if (typeof this.args.pageMargins !== 'number') {
       return 1;
     }
 
     assert(
       `@pageMargins must be a number higher than \`0\`. You provided \`${this.args.pageMargins}\`.`,
-      this.args.pageMargins > 0
+      this.args.pageMargins > 0,
     );
 
     return this.args.pageMargins;
   }
 
   get pageRange() {
-    if (isNumber(this.args.pageRange) === false) {
+    if (typeof this.args.pageRange !== 'number') {
       return null;
     }
 
     assert(
       `@pageRange must be an uneven number to make sure that the active page is always center aligned. You provided \`${this.args.pageRange}\`.`,
-      this.args.pageRange % 2 !== 0
+      this.args.pageRange % 2 !== 0,
     );
 
     return this.args.pageRange;
@@ -62,7 +98,7 @@ export default class PaginationDataComponent extends Component {
   get totalItems() {
     assert(
       `@totalItems is required and must be a number. You provided \`${this.args.totalItems}\`.`,
-      isNumber(this.args.totalItems)
+      typeof this.args.totalItems === 'number',
     );
 
     return this.args.totalItems;
@@ -133,7 +169,7 @@ export default class PaginationDataComponent extends Component {
   }
 
   get pageMarginsThreshold() {
-    return this.pageRange + this.pageMargins * 2;
+    return (this.pageRange || 0) + this.pageMargins * 2;
   }
 
   get pageRangeLowerLimit() {
@@ -185,7 +221,8 @@ export default class PaginationDataComponent extends Component {
     }
 
     return (
-      this.pageRangePages.length &&
+      Array.isArray(this.pageRangePages) &&
+      this.pageRangePages.length > 0 &&
       this.pageRangePages[0] !== this.pageRangeLowerLimit
     );
   }
@@ -200,7 +237,8 @@ export default class PaginationDataComponent extends Component {
     }
 
     return (
-      this.pageRangePages.length &&
+      Array.isArray(this.pageRangePages) &&
+      this.pageRangePages.length > 0 &&
       this.pageRangePages[this.pageRangePages.length - 1] !==
         this.pageRangeUpperLimit
     );
@@ -225,14 +263,10 @@ export default class PaginationDataComponent extends Component {
   }
 }
 
-function clamp(number, min, max) {
+function clamp(number: number, min: number, max: number) {
   return Math.min(Math.max(number, min), max);
 }
 
-function isNumber(value) {
-  return typeof value === 'number' && isNaN(value) === false;
-}
-
-function range(start, end) {
+function range(start: number, end: number) {
   return new Array(end - start + 1).fill(undefined).map((_, i) => i + start);
 }
