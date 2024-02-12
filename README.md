@@ -2,8 +2,6 @@
 
 [![CI](https://github.com/Bagaar/ember-pagination/workflows/CI/badge.svg)](https://github.com/Bagaar/ember-pagination/actions?query=workflow%3ACI)
 [![NPM Version](https://badge.fury.io/js/%40bagaar%2Fember-pagination.svg)](https://badge.fury.io/js/%40bagaar%2Fember-pagination)
-[![Code Style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 Easy customisable pagination component for Ember applications.
 
@@ -14,7 +12,6 @@ Easy customisable pagination component for Ember applications.
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
-- [Maintenance](#maintenance)
 
 ## Compatibility
 
@@ -111,7 +108,3 @@ See the [Contributing](./CONTRIBUTING.md) guide for details.
 ## License
 
 This project is licensed under the [MIT License](./LICENSE.md).
-
-## Maintenance
-
-`@bagaar/ember-pagination` is built and maintained by [Bagaar](https://bagaar.be).
