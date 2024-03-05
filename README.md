@@ -1,6 +1,6 @@
-# Ember Pagination
+# @bagaar/ember-pagination
 
-[![CI](https://github.com/Bagaar/ember-pagination/workflows/CI/badge.svg)](https://github.com/Bagaar/ember-pagination/actions?query=workflow%3ACI)
+[![CI](https://github.com/bagaar/ember-pagination/workflows/CI/badge.svg)](https://github.com/bagaar/ember-pagination/actions?query=workflow%3ACI)
 [![NPM Version](https://badge.fury.io/js/%40bagaar%2Fember-pagination.svg)](https://badge.fury.io/js/%40bagaar%2Fember-pagination)
 
 Easy customisable pagination component for Ember applications.
@@ -16,8 +16,7 @@ Easy customisable pagination component for Ember applications.
 ## Compatibility
 
 - Ember.js v4.8 or above
-- Ember CLI v4.8 or above
-- Node.js v18 or above
+- Embroider or ember-auto-import v2
 
 ## Installation
 
