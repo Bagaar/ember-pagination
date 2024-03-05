@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+
+## v0.7.0 (2024-03-05)
+
+#### :boom: Breaking Change
+* [#82](https://github.com/Bagaar/ember-pagination/pull/82) Convert to v2 addon ([@bertdeblock](https://github.com/bertdeblock))
+
+#### Committers: 1
+- Bert De Block ([@bertdeblock](https://github.com/bertdeblock))
+
 ## [0.6.0](https://github.com/bagaar/ember-pagination/compare/v0.5.1...v0.6.0) (2024-02-12)
 
 
