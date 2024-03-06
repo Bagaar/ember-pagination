@@ -21,7 +21,15 @@ Easy customisable pagination component for Ember applications.
 ## Installation
 
 ```shell
-ember install @bagaar/ember-pagination
+npm install -D @bagaar/ember-pagination
+```
+
+```shell
+pnpm add -D @bagaar/ember-pagination
+```
+
+```shell
+yarn add -D @bagaar/ember-pagination
 ```
 
 ## Usage
@@ -102,8 +110,8 @@ ember install @bagaar/ember-pagination
 
 ## Contributing
 
-See the [Contributing](./CONTRIBUTING.md) guide for details.
+See the [Contributing](CONTRIBUTING.md) guide for details.
 
 ## License
 
-This project is licensed under the [MIT License](./LICENSE.md).
+This project is licensed under the [MIT License](LICENSE.md).
